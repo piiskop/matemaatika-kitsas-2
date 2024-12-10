@@ -124,7 +124,7 @@
         <mxCell id="H3njUC9bQLBFBT5jkG47-44" value="" style="shape=line;html=1;strokeWidth=6;strokeColor=#ff0000;" parent="1" vertex="1">
           <mxGeometry x="285" y="810" width="200" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="Rrk2SFUDBp2oYCEs8pPQ-1" value="Kitsa matemaatika I kursus" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="1" vertex="1">
+        <mxCell id="Rrk2SFUDBp2oYCEs8pPQ-1" value="Kitsa matemaatika II kursus" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="1" vertex="1">
           <mxGeometry x="90" y="40" width="80" height="26" as="geometry" />
         </mxCell>
         <mxCell id="Rrk2SFUDBp2oYCEs8pPQ-2" value="tase (punkte)" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=30;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
