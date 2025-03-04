@@ -1,6 +1,6 @@
 # Ülesanded
 
-```{r label="tasks", echo=FALSE}
+```{r label="tasks", echo=FALSE, results='asis'}
 goals <- c(
   "defineerib mis tahes nurga siinuse, koosinuse ja tangensi",
   "teisendab kraadimõõdus antud nurga radiaanmõõtu ja vastupidi",
@@ -18,59 +18,53 @@ tasks <- list(
   list(goal = 1, level = 1, task = "Defineeri suvalise nurga tangens!"),
   list(goal = 1, level = 2, task = "Esita näide suvalise nurga siinuse definitsiooni kohta!"),
   list(goal = 1, level = 2, task = "Esita näide suvalise nurga koosinuse definitsiooni kohta!"),
-  list(goal = 1, level = 2, task = "Esita näide suvalise nurga tangensi definitsiooni kohta!")
+  list(goal = 1, level = 2, task = "Esita näide suvalise nurga tangensi definitsiooni kohta!"),
+  list(goal = 2, level = 1, task = "Mis on nurgakraad?"),
+  list(goal = 2, level = 1, task = "Mis on radiaan?")
 )
 
-n_fractions <- 32  # Mitu harilikku murdu (pool koguarvust)
-n_decimals <- 32   # Mitu kümnendmurdu
+n_fractions <- 32 
+n_decimals <- 32  
 
-# Suurima ühisteguri leidmise funktsioon (murru lihtsustamiseks)
 gcd <- function(a, b) ifelse(b == 0, abs(a), Recall(b, a %% b))
 
-# **Funktsioon unikaalse hariliku murru genereerimiseks**
 generate_unique_fraction <- function(existing_values) {
   repeat {
-    num <- sample(-9:9, 1)  # Lugeja vahemikus [-999, 999]
-    den <- sample(1:9, 1)     # Nimetaja vahemikus [1, 999], vältides 0
+    num <- sample(-9:9, 1)  
+    den <- sample(1:9, 1)    
     
-    common_factor <- gcd(num, den)  # Leiame suurima ühisteguri
+    common_factor <- gcd(num, den)
     num <- num / common_factor
     den <- den / common_factor
 
-    # Loome unikaalse identifikaatori kujul "num/den"
     frac_str <- paste(num, den, sep = "/")
     
-    # Kontrollime, et see väärtus pole veel olemas ja pole 0
     if (!(frac_str %in% existing_values) && num != 0 && abs(num) <= 999 && den <= 999) {
-      return(list(frac_str, c(num, den)))  # Tagastame nii identifikaatori kui ka murru
+      return(list(frac_str, c(num, den))) 
     }
   }
 }
 
-# **Genereerime unikaalsed harilikud murrud**
-existing_values <- c()  # Siia salvestame juba kasutatud väärtused
+existing_values <- c()  
 angles_fractions <- list()
 
 for (i in 1:n_fractions) {
   new_frac <- generate_unique_fraction(existing_values)
-  existing_values <- c(existing_values, new_frac[[1]])  # Lisame uue väärtuse
-  angles_fractions[[i]] <- new_frac[[2]]  # Salvestame murru numbrilise esitusena
+  existing_values <- c(existing_values, new_frac[[1]]) 
+  angles_fractions[[i]] <- new_frac[[2]] 
 }
 
-# **Genereerime kümnendmurdude väärtused sammuga 0,25 ja välistame kordused**
-possible_decimals <- setdiff(seq(-4, 4, by = 0.25), 0)  # Eemaldame 0
-angles_decimals <- sample(possible_decimals, n_decimals, replace = FALSE)  # Unikaalsed väärtused
+possible_decimals <- setdiff(seq(-4, 4, by = 0.25), 0) 
+angles_decimals <- sample(possible_decimals, n_decimals, replace = FALSE)
 
-# **Lisame 0 ainult ühe korra, kui see on vajalik**
-if (runif(1) > 0.5) {  # Lisame nulli ainult juhuslikult, et see poleks alati sees
+if (runif(1) > 0.5) {
   all_angles <- c(angles_fractions, as.list(angles_decimals), list(0))
 } else {
   all_angles <- c(angles_fractions, as.list(angles_decimals))
 }
 
-# **Funktsioon teisendamiseks LaTeX-vormingusse**
 format_latex <- function(value) {
-  if (is.list(value) || length(value) == 2) {  # Kui tegemist on hariliku murruga (vektor)
+  if (is.list(value) || length(value) == 2) {
     num <- value[1]
     den <- value[2]
     
@@ -85,7 +79,7 @@ format_latex <- function(value) {
     } else {
       return(paste0("\\frac{", num, "}{", den, "} \\pi"))
     }
-  } else {  # Kui tegemist on kümnendmurruga (üksik väärtus)
+  } else { 
     if (value == 0) {
       return("0")
     } else if (value == 1) {
@@ -98,50 +92,153 @@ format_latex <- function(value) {
   }
 }
 
-# **Teisendame LaTeX-vormingusse**
 angles_latex <- sapply(all_angles, format_latex)
-
-# Kuvame väljundi
-print(angles_latex)
-
 number_of_angles_in_radians <- length(angles_latex)
 
 tasks_angles_in_radians <- lapply(1:number_of_angles_in_radians, function(i) {
-  list(goal = 2, level = 2, task = paste0("Teisenda kraadidesse nurk ", angles_latex[i], "."))
+  list(goal = 2, level = 2, task = paste0("Teisenda kraadidesse nurk $", angles_latex[i], "$. Näita kogu teisenduskäik!"))
 })
 
-n_degrees <- 64  # Mitu unikaalset kraadi väärtust
-
-# Loome juhuslikult 64 unikaalset täisarvu kraadides vahemikus -720 kuni 720
+n_degrees <- 64
 angles_degrees <- sample(-720:720, n_degrees, replace = FALSE)
 
-# Kuvame saadud väärtused
-print(angles_degrees)
-
 tasks_angles_in_degrees <- lapply(1:n_degrees, function(i) {
-  list(goal = 2, level = 2, task = paste0("Teisenda radiaanidesse nurk ", angles_degrees[i], "\\degree."))
+  list(goal = 2, level = 2, task = paste0("Teisenda radiaanidesse nurk ", angles_degrees[i], "\\degree. Suurus radiaanides peab olema täpne. Näita kogu teisenduskäik!"))
 })
 
-tasks <- c(tasks, tasks_angles_in_radians, tasks_angles_in_degrees)
-# Kuvame LaTeX vormingus väljundi
-print(tasks)
+# Creating tasks at the level 3 on radians-degrees
+
+n_combinations <- 64  # Kombinatsioonide arv
+half_straight <- n_combinations / 2  # 32 sirgnurka ja 32 mitte
+combinations <- list()  # Loome tühja listi
+
+# Kõik lubatud radiaanid, mis teisenduvad täisarvudeks kraadides (jaotur kuni 180)
+valid_radian_fractions <- expand.grid(numerator = 1:179, denominator = 2:180)
+valid_radian_fractions <- valid_radian_fractions[valid_radian_fractions$numerator < valid_radian_fractions$denominator, ]
+valid_radian_fractions$degree <- with(valid_radian_fractions, (numerator / denominator) * 180)
+valid_radian_fractions <- valid_radian_fractions[valid_radian_fractions$degree %% 1 == 0, ]  # Ainult täisarvud
+
+# Funktsioon lihtsustatud radiaanmurdude loomiseks
+simplify_fraction <- function(num, denom) {
+  gcd_value <- gcd(num, denom)  # Leian suurima ühisteguri
+  num <- num / gcd_value
+  denom <- denom / gcd_value
+  return(list(latex = paste0("\\frac{", num, "}{", denom, "}\\pi"), degree = (num / denom) * 180))
+}
+
+# Funktsioon kraadinurga loomiseks (1° kuni max_value kraadi)
+generate_degree <- function(max_value) {
+  return(sample(1:max_value, 1))  # Ainult täisarv kraadides
+}
+
+# Funktsioon radiaaninurga valimiseks ainult sobilike seast
+generate_radian <- function(degree_value) {
+  valid_choices <- valid_radian_fractions[valid_radian_fractions$degree == degree_value, ]
+  if (nrow(valid_choices) == 0) return(NULL)  # Tagame, et leidub õige radiaan
+  chosen <- valid_choices[sample(nrow(valid_choices), 1), ]
+  return(simplify_fraction(chosen$numerator, chosen$denominator))
+}
+
+# Loome 64 kombinatsiooni
+for (i in 1:n_combinations) {
+  is_straight <- i <= half_straight  # Esimesed 32 on sirgnurgad
+
+  # **Loome kõigepealt kraadinurgad, et summa oleks täpne**
+  angle1 <- generate_degree(178)
+  angle2 <- generate_degree(179 - angle1)
+  if (is_straight) {
+    angle3 <- 180 - (angle1 + angle2)
+  } else {
+    angle3 <- generate_degree(179 - (angle1 + angle2))
+  }
+
+  # Kontrollime, et summa on õige
+  sum_kraadides <- angle1 + angle2 + angle3
+
+  # Paneme kraadinurgad listi
+  angles <- c(angle1, angle2, angle3)
+
+  # **Asendame juhuslikult ühe või kaks kraadinurka radiaanidega**
+  radian_conversion_count <- sample(1:2, 1)  # Kas asendame ühe või kaks nurka?
+  converted <- 0  # Loendur edukate teisenduste jaoks
+
+  for (j in sample(1:3, 3)) {  # Käime kõik kolm nurka läbi suvalises järjekorras
+    if (converted < radian_conversion_count) {
+      radian_version <- generate_radian(angles[j])
+      if (!is.null(radian_version)) {
+        angles[j] <- paste("$", radian_version$latex, "$", sep = "")
+        converted <- converted + 1
+      }
+    } else {
+      angles[j] <- paste("$", angles[j], "\\degree$", sep = "")
+    }
+  }
+
+  # Salvestame kombinatsiooni
+  combinations[[i]] <- c(angles[1], angles[2], angles[3], sum_kraadides)
+}
+
+# Teisendame `data.frame`-iks, veendudes, et igal real on täpselt 4 veergu
+df_combinations <- as.data.frame(do.call(rbind, combinations), stringsAsFactors = FALSE)
+colnames(df_combinations) <- c("Nurk 1", "Nurk 2", "Nurk 3", "Summa kraadides")
+
+combinations_list <- apply(df_combinations, 1, function(row) {
+  list(
+    goal = 2,
+    level = 3,
+    task = paste("Kontrolli arvutades, kas need kolm nurka võivad olla sama kolmnurga erinevad sisenurgad: ", row[1], ", ", row[2], " ja ", row[3], ".", sep = "")
+  )
+})
+
+# Putting together all the tasks
+
+tasks <- c(
+  tasks,
+  tasks_angles_in_radians, 
+  tasks_angles_in_degrees,
+  combinations_list
+)
 
 dataframe_tasks <- do.call(rbind, lapply(tasks, as.data.frame))
-print(dataframe_tasks)
 number_goals <- length(goals)
 
 librarian::shelf(c(
   "dplyr"
 ))
-
-for (index in 1:number_goals) {
-  tasks_at_level <- subset(dataframe_tasks, index == `level`)
-
-  if (nrow(tasks_at_level) > 0) {
-    print(sample_n(tasks_at_level, 1))
+number_of_pupils <- 64
+for (index_of_pupil in 1:number_of_pupils) {
+  cat(paste("## ", index_of_pupil, ". õpilane\n\n", sep = ""))
+  for (index in 1:number_goals) {
+    if(index %in% dataframe_tasks$goal) {
+      
+      cat(paste("**Õpiväljund:** Õpilane ", goals[index], ".\n\n", sep = ""))
+      tasks_of_goal <- subset(dataframe_tasks, index == `goal`) %>%
+        arrange(`level`)
+      number_of_tasks_of_goal <- nrow(tasks_of_goal)
+      current_level = 0
+      for (index_of_levels in 1:number_of_tasks_of_goal) {
+        if (current_level != tasks_of_goal[index_of_levels, ]$`level`) {
+          current_level = tasks_of_goal[index_of_levels, ]$`level`
+          
+          cat(
+            "**",
+            tasks_of_goal[index_of_levels, ]$`level`,
+            ". taseme ülesanne:** ",
+            sep = ""
+          )
+          tasks_at_level <- subset(tasks_of_goal, current_level == `level`)
+          cat(sample(tasks_at_level$task, 1), "\n\n", sep = "")
+        }
+      
+      }
+    }
+  
   }
-
 }
+
+```
+
+```{r}
 
 ```
 

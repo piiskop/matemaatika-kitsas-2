@@ -4,7 +4,7 @@ site: bookdown::bookdown_site
 colorlinks: TRUE
 author: "peacecop kalmer:"
 description: "Kitsa matemaatika teine kursus."
-lang: en
+lang: et
 include-before:
     - \input{title-page.tex}
 title: "`r if (knitr::is_latex_output()) { '' } else { 'Kitsa matemaatika<br/>teine<br/>kursus' }`"
