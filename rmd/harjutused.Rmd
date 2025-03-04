@@ -1,0 +1,147 @@
+# Ülesanded
+
+```{r label="tasks", echo=FALSE}
+goals <- c(
+  "defineerib mis tahes nurga siinuse, koosinuse ja tangensi",
+  "teisendab kraadimõõdus antud nurga radiaanmõõtu ja vastupidi",
+  "teisendab lihtsamaid trigonomeetrilisi avaldisi (rakenduvad maksimaalselt 3 erinevat trigonomeetrilist seost)",
+  "loeb trigonomeetriliste funktsioonide graafikuid",
+  "rakendab trigonomeetriat, siinus- ja koosinusteoreemi ning kolmnurga pindala valemeid kolmnurga lahendamisel",
+  "leiab rööpküliku ja hulknurga pindala, tükeldades need sobivalt kolmnurkadeks",
+  "arvutab ringjoone kaare kui ringjoone osa pikkuse ning ringi sektori kui ringi osa pindala",
+  "lahendab lihtsamaid reaalelulise kontekstiga planimeetria probleeme"
+)
+
+tasks <- list(
+  list(goal = 1, level = 1, task = "Defineeri suvalise nurga siinus!"),
+  list(goal = 1, level = 1, task = "Defineeri suvalise nurga koosinus!"),
+  list(goal = 1, level = 1, task = "Defineeri suvalise nurga tangens!"),
+  list(goal = 1, level = 2, task = "Esita näide suvalise nurga siinuse definitsiooni kohta!"),
+  list(goal = 1, level = 2, task = "Esita näide suvalise nurga koosinuse definitsiooni kohta!"),
+  list(goal = 1, level = 2, task = "Esita näide suvalise nurga tangensi definitsiooni kohta!")
+)
+
+n_fractions <- 32  # Mitu harilikku murdu (pool koguarvust)
+n_decimals <- 32   # Mitu kümnendmurdu
+
+# Suurima ühisteguri leidmise funktsioon (murru lihtsustamiseks)
+gcd <- function(a, b) ifelse(b == 0, abs(a), Recall(b, a %% b))
+
+# **Funktsioon unikaalse hariliku murru genereerimiseks**
+generate_unique_fraction <- function(existing_values) {
+  repeat {
+    num <- sample(-9:9, 1)  # Lugeja vahemikus [-999, 999]
+    den <- sample(1:9, 1)     # Nimetaja vahemikus [1, 999], vältides 0
+    
+    common_factor <- gcd(num, den)  # Leiame suurima ühisteguri
+    num <- num / common_factor
+    den <- den / common_factor
+
+    # Loome unikaalse identifikaatori kujul "num/den"
+    frac_str <- paste(num, den, sep = "/")
+    
+    # Kontrollime, et see väärtus pole veel olemas ja pole 0
+    if (!(frac_str %in% existing_values) && num != 0 && abs(num) <= 999 && den <= 999) {
+      return(list(frac_str, c(num, den)))  # Tagastame nii identifikaatori kui ka murru
+    }
+  }
+}
+
+# **Genereerime unikaalsed harilikud murrud**
+existing_values <- c()  # Siia salvestame juba kasutatud väärtused
+angles_fractions <- list()
+
+for (i in 1:n_fractions) {
+  new_frac <- generate_unique_fraction(existing_values)
+  existing_values <- c(existing_values, new_frac[[1]])  # Lisame uue väärtuse
+  angles_fractions[[i]] <- new_frac[[2]]  # Salvestame murru numbrilise esitusena
+}
+
+# **Genereerime kümnendmurdude väärtused sammuga 0,25 ja välistame kordused**
+possible_decimals <- setdiff(seq(-4, 4, by = 0.25), 0)  # Eemaldame 0
+angles_decimals <- sample(possible_decimals, n_decimals, replace = FALSE)  # Unikaalsed väärtused
+
+# **Lisame 0 ainult ühe korra, kui see on vajalik**
+if (runif(1) > 0.5) {  # Lisame nulli ainult juhuslikult, et see poleks alati sees
+  all_angles <- c(angles_fractions, as.list(angles_decimals), list(0))
+} else {
+  all_angles <- c(angles_fractions, as.list(angles_decimals))
+}
+
+# **Funktsioon teisendamiseks LaTeX-vormingusse**
+format_latex <- function(value) {
+  if (is.list(value) || length(value) == 2) {  # Kui tegemist on hariliku murruga (vektor)
+    num <- value[1]
+    den <- value[2]
+    
+    if (num == den) {
+      return("\\pi")
+    } else if (num == -den) {
+      return("-\\pi")
+    } else if (den == 1) {
+      return(paste0(num, "\\pi"))
+    } else if (num < 0) {
+      return(paste0("-\\frac{", abs(num), "}{", den, "} \\pi"))
+    } else {
+      return(paste0("\\frac{", num, "}{", den, "} \\pi"))
+    }
+  } else {  # Kui tegemist on kümnendmurruga (üksik väärtus)
+    if (value == 0) {
+      return("0")
+    } else if (value == 1) {
+      return("\\pi")
+    } else if (value == -1) {
+      return("-\\pi")
+    } else {
+      return(paste0(value, "\\pi"))
+    }
+  }
+}
+
+# **Teisendame LaTeX-vormingusse**
+angles_latex <- sapply(all_angles, format_latex)
+
+# Kuvame väljundi
+print(angles_latex)
+
+number_of_angles_in_radians <- length(angles_latex)
+
+tasks_angles_in_radians <- lapply(1:number_of_angles_in_radians, function(i) {
+  list(goal = 2, level = 2, task = paste0("Teisenda kraadidesse nurk ", angles_latex[i], "."))
+})
+
+n_degrees <- 64  # Mitu unikaalset kraadi väärtust
+
+# Loome juhuslikult 64 unikaalset täisarvu kraadides vahemikus -720 kuni 720
+angles_degrees <- sample(-720:720, n_degrees, replace = FALSE)
+
+# Kuvame saadud väärtused
+print(angles_degrees)
+
+tasks_angles_in_degrees <- lapply(1:n_degrees, function(i) {
+  list(goal = 2, level = 2, task = paste0("Teisenda radiaanidesse nurk ", angles_degrees[i], "\\degree."))
+})
+
+tasks <- c(tasks, tasks_angles_in_radians, tasks_angles_in_degrees)
+# Kuvame LaTeX vormingus väljundi
+print(tasks)
+
+dataframe_tasks <- do.call(rbind, lapply(tasks, as.data.frame))
+print(dataframe_tasks)
+number_goals <- length(goals)
+
+librarian::shelf(c(
+  "dplyr"
+))
+
+for (index in 1:number_goals) {
+  tasks_at_level <- subset(dataframe_tasks, index == `level`)
+
+  if (nrow(tasks_at_level) > 0) {
+    print(sample_n(tasks_at_level, 1))
+  }
+
+}
+
+```
+

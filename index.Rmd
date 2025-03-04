@@ -229,3 +229,4 @@ render_color <- function(color, text) {
 
 # Introduction {-}
 
+Märkasin, et õpilane kirjutas tuimalt ChatGPT'st lahendusi ümber ülesannetele, mille talle õppimiseks ja kinnistamiseks andsin. Ütlesin talle, miks ma need ülesanded talle andsin ja et testis ei ole võimalik ChatGPT'd kasutada. Kõndisin edasi. Kui tagasi vaatasin, oli õpilane lahkunud ja pinginaabri ka kaasa võtnud.
