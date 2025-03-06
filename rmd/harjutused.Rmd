@@ -20,6 +20,8 @@ tasks <- list(
   list(goal = 1, level = 2, task = "Esita näide suvalise nurga koosinuse definitsiooni kohta!"),
   list(goal = 1, level = 2, task = "Esita näide suvalise nurga tangensi definitsiooni kohta!"),
   list(goal = 2, level = 1, task = "Mis on nurgakraad?"),
+  list(goal = 2, level = 1, task = "Kui suur on sirgnurk radiaanides ja miks?"),
+  list(goal = 2, level = 1, task = "Kui suur on sirgnurk kraadides ja miks?"),
   list(goal = 2, level = 1, task = "Mis on radiaan?")
 )
 
@@ -190,13 +192,197 @@ combinations_list <- apply(df_combinations, 1, function(row) {
   )
 })
 
+modification_of_expressions <- list(
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{1}{[\\mathrm{cos}(\\alpha)]^2}\\cdot \\left\\{\\frac{1}{[\\mathrm{sin}(\\alpha)]^2} -1 \\right\\}.$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{1}{[\\mathrm{sin}(\\alpha)]^2} - \\frac{1}{[\\mathrm{tan}(\\alpha)]^2} + [\\mathrm{tan}(\\alpha)]^2.$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$[\\mathrm{sin}(\\alpha) + \\mathrm{cos}(\\alpha)]^2 + [\\mathrm{cos}(\\alpha) - \\mathrm{sin}(\\alpha)]^2 .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kontrolli pakutud lahendit näidates vahesamme: $$[\\mathrm{sin}(\\alpha) + \\mathrm{cos}(\\alpha)]^2 + [\\mathrm{sin}(\\alpha) - \\mathrm{cos}(\\alpha)]^2 = 2 .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\left\\{\\frac{1}{[\\mathrm{cos}(\\alpha)]^2} - 1\\right\\} \\cdot \\left\\{\\frac{1}{[\\mathrm{sin}(\\alpha)^2]} - 1\\right\\} .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{1 + [\\mathrm{cos}(\\alpha)^2] - [\\mathrm{sin}(\\alpha)]^2}{\\mathrm{sin}(\\alpha) \\cdot \\mathrm{cos}(\\alpha)} .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$[\\mathrm{sin}(20\\degree) + \\mathrm{cos}(20\\degree)]^2 + [\\mathrm{sin}(20\\degree) - \\mathrm{cos}(20\\degree)]^2 .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\mathrm{sin}(225\\degree) .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\mathrm{sin}(120\\degree) .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\mathrm{sin}(300\\degree) .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\mathrm{tan}(330\\degree) .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\mathrm{tan}(315\\degree) .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\mathrm{tan}(135\\degree) .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\mathrm{cos}(330\\degree) .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kontrolli pakutud lahendit näidates vahesamme: $$\\frac{2 \\cdot [\\mathrm{sin}(\\alpha)]^2 - 1}{1 - 2 \\cdot [\\mathrm{cos}(\\alpha)]^2} = 1 .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kontrolli pakutud lahendit näidates vahesamme: $$[1 - \\mathrm{cos}(\\alpha)]^2 + [1 + \\mathrm{cos}(\\alpha)]^2 - 4 \\cdot [\\mathrm{cos}(\\alpha)]^2 = 2 \\cdot [\\mathrm{sin}(\\alpha)]^2 .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$1-\\mathrm{sin}(\\alpha)\\cdot \\frac{1}{\\mathrm{tan}(\\alpha)} \\cdot \\mathrm{cos}(\\alpha).$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{1 + 2 \\cdot \\mathrm{cos}(x) + \\mathrm{cos}(2 \\cdot x)}{1 - 2 \\cdot \\mathrm{cos}(x) + \\mathrm{cos}(2 \\cdot x)}.$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$1 - \\mathrm{cos}(15\\degree) \\cdot \\mathrm{cos}(75\\degree).$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kontrolli pakutud lahendit näidates vahesamme: $$1 - \\mathrm{sin}(\\alpha) \\cdot \\mathrm{cos}(\\alpha) \\cdot \\mathrm{tan}(\\alpha) = [\\mathrm{cos}(\\alpha)]^2 .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kontrolli pakutud lahendit näidates vahesamme: $$[\\mathrm{sin}(\\alpha)]^2 + [\\mathrm{tan}(\\alpha)]^2 + [\\mathrm{cos}(\\alpha)]^2 = [\\mathrm{cos}(\\alpha)]^{-2} .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$[\\mathrm{cos}(35\\degree)]^2 - \\mathrm{cos}(70\\degree) - [\\mathrm{sin}(35\\degree)]^2 \\times [\\mathrm{cos}(35\\degree)]^2.$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$2 \\times [\\mathrm{cos}(10\\degree)]^3 \\times \\mathrm{sin}(10\\degree) - 2 \\times [\\mathrm{sin}(10\\degree)]^3 \\times \\mathrm{cos}(10\\degree).$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\{1 - [\\mathrm{sin}(\\alpha)]^2\\} \\cdot [\\mathrm{tan}(\\alpha)]^2 - 1 .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{1 - [\\mathrm{sin}(\\alpha) - \\mathrm{cos}(\\alpha)]^2}{1 - [\\mathrm{cos}(\\alpha)]^2 + [\\mathrm{sin}(\\alpha)]^2} .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Tõesta samasus: $$\\left\\{[\\mathrm{tan}(\\alpha)]^2 - [\\mathrm{sin}(\\alpha)]^2\\right\\} \\cdot \\frac{1}{[\\mathrm{tan}(\\alpha)]^2} = [\\mathrm{sin}(\\alpha)]^2 .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Tõesta samasus: $$[1 + \\mathrm{sin}(\\alpha)] \\cdot [1 - \\mathrm{sin}(\\alpha)] \\cdot [\\mathrm{tan}(\\alpha)]^2 = [\\mathrm{sin}(\\alpha)]^2 .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Tõesta samasus: $$\\left\\{1 + \\frac{1}{[\\mathrm{tan}(\\alpha)]^2}\\right\\} \\cdot \\left\\{1 - [\\mathrm{sin}(\\alpha)]^2\\right\\} = \\frac{1}{[\\mathrm{tan}(\\alpha)]^2} .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Tõesta samasus: $$\\{1 + [\\mathrm{sin}(\\alpha)]^2 - [\\mathrm{cos}(\\alpha)]^2\\} \\cdot \\frac{1}{[\\mathrm{tan}(\\alpha)]^2} = 2 \\cdot [\\mathrm{cos}(\\alpha)]^2 .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{\\mathrm{cos}(2 \\cdot \\alpha)}{\\mathrm{cos}(\\alpha)} - \\frac{\\mathrm{sin}(2 \\cdot \\alpha)}{\\mathrm{sin}(\\alpha)}.$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Tõesta näidates vahesamme, et $$\\frac{\\mathrm{sin}(2 \\cdot x)}{1 + \\mathrm{cos}(2 \\cdot x)} \\cdot \\frac{\\mathrm{cos}(x)}{1 - [\\mathrm{cos}(x)]^2} = \\frac{1}{\\mathrm{sin}(x)}.$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme $$\\frac{[\\mathrm{sin}(2 \\cdot x)]^2 - 4 \\cdot [\\mathrm{sin}(x)]^2}{[\\mathrm{sin}(2 \\cdot x)]^2 + 4 \\cdot [\\mathrm{sin}(x)]^2 - 4}.$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme $$\\mathrm{tan}(-660\\degree)\\times [\\mathrm{cos}(720\\degree) + \\mathrm{tan}(1500\\degree)] .$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme $$[\\mathrm{sin}(-270\\degree) - \\mathrm{tan}(675\\degree)] : \\mathrm{sin}(-1125\\degree) .$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kontrolli pakutud lahendit näidates vahesamme: $$[\\mathrm{sin}(90\\degree - \\alpha)]^2 - [\\mathrm{cos}(180\\degree - \\alpha)]^2 + [\\mathrm{tan}(180\\degree - \\alpha)]^2 = \\frac{1}{[\\mathrm{cos}(\\alpha)]^2} .$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{1}{4} \\times \\mathrm{sin}(\\frac{\\pi}{6}) \\times \\mathrm{cos}(\\frac{5 \\times \\pi}{4}) \\times \\mathrm{sin}(135\\degree) - [\\mathrm{sin}(\\frac{\\pi}{4}) + \\mathrm{cos}(315\\degree)]^2 .$$"
+  ) # 3
+)
+
 # Putting together all the tasks
 
 tasks <- c(
   tasks,
   tasks_angles_in_radians, 
   tasks_angles_in_degrees,
-  combinations_list
+  combinations_list,
+  modification_of_expressions
 )
 
 dataframe_tasks <- do.call(rbind, lapply(tasks, as.data.frame))
@@ -205,40 +391,90 @@ number_goals <- length(goals)
 librarian::shelf(c(
   "dplyr"
 ))
+
 number_of_pupils <- 64
-for (index_of_pupil in 1:number_of_pupils) {
-  cat(paste("## ", index_of_pupil, ". õpilane\n\n", sep = ""))
-  for (index in 1:number_goals) {
-    if(index %in% dataframe_tasks$goal) {
-      
-      cat(paste("**Õpiväljund:** Õpilane ", goals[index], ".\n\n", sep = ""))
-      tasks_of_goal <- subset(dataframe_tasks, index == `goal`) %>%
-        arrange(`level`)
-      number_of_tasks_of_goal <- nrow(tasks_of_goal)
-      current_level = 0
-      for (index_of_levels in 1:number_of_tasks_of_goal) {
-        if (current_level != tasks_of_goal[index_of_levels, ]$`level`) {
-          current_level = tasks_of_goal[index_of_levels, ]$`level`
-          
-          cat(
-            "**",
-            tasks_of_goal[index_of_levels, ]$`level`,
-            ". taseme ülesanne:** ",
-            sep = ""
-          )
-          tasks_at_level <- subset(tasks_of_goal, current_level == `level`)
-          cat(sample(tasks_at_level$task, 1), "\n\n", sep = "")
-        }
-      
-      }
-    }
-  
-  }
+
+goals_in_use <- unique(dataframe_tasks$goal)
+number_of_goals_in_use <- length(goals_in_use)
+
+random_sample_df <- function(df, new_size) {
+  base_size <- floor(new_size / nrow(df))  # Kui palju kordi iga rida vähemalt esineb
+  remaining <- new_size %% nrow(df)  # Mitu rida tuleb veel lisada
+
+  # Loome uue `data.frame`-i, kus iga rida esineb vähemalt `base_size` korda
+  repeated_df <- df[rep(1:nrow(df), each = base_size), ]
+
+  # Lisame ülejäänud read juhuslikult
+  extra_rows <- df[sample(1:nrow(df), remaining, replace = FALSE), ]
+
+  # Ühendame ja segame
+  final_df <- rbind(repeated_df, extra_rows)
+  final_df <- final_df[sample(1:nrow(final_df)), ]  # Segamine
+
+  return(final_df)
 }
 
-```
+for (index_of_pupil in 1:number_of_pupils) {
 
-```{r}
+  for (index in 1:number_of_goals_in_use) {
+    tasks_of_goal <- subset(dataframe_tasks, goals_in_use[index] == `goal`)
+    levels_in_use <- unique(tasks_of_goal$level)
+    number_of_levels_in_use <- length(levels_in_use)
+    
+    for (index_of_level in 1:number_of_levels_in_use) {
+      tasks_at_level <- subset(tasks_of_goal, levels_in_use[index_of_level] == `level`)
+      sampled_tasks_at_level <- random_sample_df(df = tasks_at_level, new_size = number_of_pupils)
+      
+      if (exists("sampled_tasks")) {
+        sampled_tasks <- rbind(sampled_tasks, sampled_tasks_at_level)
+      } else {
+        sampled_tasks <- sampled_tasks_at_level
+      }
+      
+    }
+      
+  }
+  
+}
+
+sampled_tasks <- arrange(sampled_tasks, goal, level)
+
+for (index_of_pupil in 1:number_of_pupils) {
+  cat(paste("## Test: ", index_of_pupil, ". õpilane\n\n", sep = ""))
+
+  for (index in 1:number_of_goals_in_use) {
+    
+    cat(paste(
+      "**Õpiväljund:** Õpilane ",
+      goals[goals_in_use[index]],
+      ".\n\n", 
+      sep = ""
+    ))
+    
+    tasks_of_goal <- subset(sampled_tasks, goals_in_use[index] == `goal`)
+    levels_in_use <- unique(x = tasks_of_goal$level)
+    number_of_levels_in_use <- length(levels_in_use)
+
+    for (index_of_levels in 1:number_of_levels_in_use) {
+          
+      cat(
+        "**",
+        levels_in_use[index_of_levels],
+        ". taseme ülesanne:** ",
+        sep = ""
+      )
+
+      tasks_at_level <- subset(
+        tasks_of_goal,
+        levels_in_use[index_of_levels] == `level`
+      )
+      
+      cat(tasks_at_level[index_of_pupil, ]$task, "\n\n", sep = "")
+    }
+
+  }
+
+}
 
 ```
 
