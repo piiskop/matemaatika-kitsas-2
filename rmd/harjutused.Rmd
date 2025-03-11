@@ -276,6 +276,96 @@ modification_of_expressions <- list(
   list(
     goal = 3,
     level = 3,
+    task = "Arvuta näidates vahesamme: $$\\mathrm{sin}(30\\degree) \\times \\mathrm{cot}(30\\degree) + \\mathrm{cos}(30\\degree)[\\mathrm{tan}(60\\degree) - \\mathrm{tan}(45\\degree)] .$$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Teisenda sekunditeks näidates vahesamme: $$\\ang{0; 45}. $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Teisenda sekunditeks näidates vahesamme: $$\\ang{15}. $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Täisnurkse kolmnurga kaatetid on $a$ ja $b$ ning hüpotenuus $c$. Esita antud avaldis täisnurkse kolmnurga teravnurkade siinuse, koosinuse ja tangensi kaudu näidates võimalusel vahesamme: $$\\frac{a}{b}. $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Täisnurkse kolmnurga kaatetid on $a$ ja $b$ ning hüpotenuus $c$. Esita antud avaldis täisnurkse kolmnurga teravnurkade siinuse, koosinuse ja tangensi kaudu näidates võimalusel vahesamme: $$\\frac{c^2}{b^2}. $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Täisnurkse kolmnurga kaatetid on $a$ ja $b$ ning hüpotenuus $c$. Esita antud avaldis täisnurkse kolmnurga teravnurkade siinuse, koosinuse ja tangensi kaudu näidates võimalusel vahesamme: $$\\frac{b}{a}. $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kas on võimalik niisugune täisnurkne kolmnurk, milles $\\mathrm{sin}(\\alpha) = \\num{0.39}?$ Põhjenda!"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kas on võimalik niisugune täisnurkne kolmnurk, milles $\\mathrm{sin}(\\alpha) = \\num{0.02}?$ Põhjenda!"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kas on võimalik niisugune täisnurkne kolmnurk, milles $\\mathrm{sin}(\\alpha) = \\num{1}?$ Põhjenda!"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kas on võimalik niisugune täisnurkne kolmnurk, milles $\\mathrm{sin}(\\alpha) = \\num{1.03}?$ Põhjenda!"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kas on võimalik niisugune täisnurkne kolmnurk, milles $\\mathrm{cos}(\\alpha) = \\num{2.4}?$ Põhjenda!"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Kas on võimalik niisugune täisnurkne kolmnurk, milles $\\mathrm{cos}(\\alpha) = \\num{0.1}?$ Põhjenda!"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$\\mathrm{cos}(\\alpha) : \\mathrm{sin}(\\alpha) \\cdot \\mathrm{tan}(\\alpha). $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$1 - \\mathrm{tan}(\\alpha) : \\mathrm{sin}(\\alpha) : \\mathrm{cos}(\\alpha). $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$1 + [\\mathrm{cos}(\\alpha)]^2 - [\\mathrm{sin}(\\alpha)]^2. $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$1 + [\\mathrm{cos}(\\alpha)]^2 - [\\mathrm{sin}(\\alpha)]^2 \\cdot [\\mathrm{cot}(\\alpha)]^2. $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$\\mathrm{tan}(\\qty{20}{\\degree}) \\cdot [\\mathrm{cos}(\\qty{20}{\\degree}) + 1] - \\mathrm{sin}(\\qty{20}{\\degree}) : \\mathrm{cos}(\\qty{20}{\\degree}) . $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$[1 + \\mathrm{tan}(\\qty{75}{\\degree})]^2 - [1 - \\mathrm{cot}(\\qty{15}{\\degree})]^2 . $$"
+  ), # 1
+  list(
+    goal = 3,
+    level = 3,
     task = "Lihtsusta lõpuni näidates vahesamme: $$1-\\mathrm{sin}(\\alpha)\\cdot \\frac{1}{\\mathrm{tan}(\\alpha)} \\cdot \\mathrm{cos}(\\alpha).$$"
   ), # 2
   list(
@@ -341,6 +431,186 @@ modification_of_expressions <- list(
   list(
     goal = 3,
     level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates vahesamme: $$2 \\cdot \\mathrm{sin}(\\alpha) \\cdot [\\mathrm{sin}(\\alpha) + \\mathrm{cot}(\\alpha) \\cdot \\mathrm{cos}(\\alpha)] + \\mathrm{tan}(\\alpha)[\\mathrm{tan}(\\alpha) - \\mathrm{cot}(\\alpha)] .$$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Arvuta avaldise väärtus kraadides näidates vahesamme: $$\\ang{45; 12; 44} + \\ang{17; 26; 8}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Arvuta avaldise väärtus kraadides näidates vahesamme: $$\\ang{51; 47; 26} + \\ang{22; 34; 49}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Arvuta avaldise väärtus kraadides näidates vahesamme: $$\\ang{77; 14; 18} - \\ang{37; 8; 12}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Arvuta avaldise väärtus kraadides näidates vahesamme: $$\\ang{24; 36; 38} - \\ang{10; 41; 58}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Teisenda sekunditeks näidates vahesamme: $$\\ang{42; 20; 45}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Teisenda sekunditeks näidates vahesamme: $$\\ang{10; 22; 8}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Teisenda täiskraadideks, -minutiteks ja -sekunditeks näidates vahesamme: $$\\qty{91100}{\\arcsecond}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Teisenda täiskraadideks, -minutiteks ja -sekunditeks näidates vahesamme: $$\\qty{3523}{\\arcsecond}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Teisenda täiskraadideks, -minutiteks ja -sekunditeks näidates vahesamme: $$\\qty{14535}{\\arcsecond}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Teisenda täiskraadideks, -minutiteks ja -sekunditeks näidates vahesamme: $$\\qty{4205}{\\arcsecond}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Esita nurk kraadides, tulemus ümarda tuhandikeni näidates teisenduse vahesamme: $$\\ang{4; 50; 18}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Esita nurk kraadides, tulemus ümarda tuhandikeni näidates teisenduse vahesamme: $$\\ang{1; 37; 19}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Esita nurk kraadides, tulemus ümarda tuhandikeni näidates teisenduse vahesamme: $$\\ang{8; 4; 45}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Esita nurk kraadides, tulemus ümarda tuhandikeni näidates teisenduse vahesamme: $$\\qty{55}{\\arcminute}\\qty{36}{\\arcsecond}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Esita nurk täiskraadides, -minutites ja -sekundites näidates teisenduse vahesamme: $$\\qty{2.45}{\\degree}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Esita nurk täiskraadides, -minutites ja -sekundites näidates teisenduse vahesamme: $$\\qty{1.91}{\\degree}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Esita nurk täiskraadides, -minutites ja -sekundites näidates teisenduse vahesamme: $$\\qty{0.18}{\\degree}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Esita nurk täiskraadides, -minutites ja -sekundites näidates teisenduse vahesamme: $$\\qty{61.29}{\\degree}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Täisnurkse kolmnurga kaatetid on $a$ ja $b$ ning hüpotenuus $c$. Esita antud avaldis täisnurkse kolmnurga teravnurkade siinuse, koosinuse ja tangensi kaudu näidates võimalusel vahesamme: $$1 - \\frac{b^2}{c^2}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Täisnurkse kolmnurga kaatetid on $a$ ja $b$ ning hüpotenuus $c$. Esita antud avaldis täisnurkse kolmnurga teravnurkade siinuse, koosinuse ja tangensi kaudu näidates võimalusel vahesamme: $$\\frac{a \\cdot c}{b^2}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Täisnurkse kolmnurga kaatetid on $a$ ja $b$ ning hüpotenuus $c$. Esita antud avaldis täisnurkse kolmnurga teravnurkade siinuse, koosinuse ja tangensi kaudu näidates võimalusel vahesamme: $$\\frac{a \\cdot c}{c^2 - a^2}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$2 - \\mathrm{sin}(\\alpha) \\cdot \\mathrm{cos}(\\alpha) \\cdot \\mathrm{tan}(\\alpha). $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$\\frac{1}{1 + [\\mathrm{tan}(\\alpha)]^2} + [\\mathrm{sin}(\\alpha)]^2. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$\\frac{[\\mathrm{tan}(\\alpha)]^2}{1 + [\\mathrm{tan}(\\alpha)]^2} - 1. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$[1 + \\mathrm{sin}(\\alpha)]^2 + [1 - \\mathrm{cos}(\\alpha)]^2 - 2 \\cdot \\mathrm{tan}(\\alpha) \\cdot \\mathrm{cos}(\\alpha). $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$[\\mathrm{tan}(\\alpha)]^2 - \\mathrm{sin}(\\alpha) \\cdot \\mathrm{tan}(\\alpha) \\cdot [\\mathrm{tan}(\\alpha) - 1] \\cdot [\\mathrm{sin}(\\alpha) + \\mathrm{cos}(\\alpha)]. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$[\\mathrm{sin}(\\alpha) + \\mathrm{\\cos}(\\alpha)] \\cdot \\mathrm{sin}(\\alpha) - [\\mathrm{cos}(\\alpha)]^2 \\cdot [\\mathrm{tan}(\\alpha) - 1]. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$\\mathrm{cos}(\\alpha) \\cdot [\\mathrm{sin}(\\alpha) \\dot \\mathrm{tan}(\\alpha) + \\mathrm{cos}(\\alpha)] + [\\mathrm{sin}(\\alpha)]^2 : [\\mathrm{cos}(\\alpha)]^2. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$[\\mathrm{tan}(\\alpha)]^2 \\cdot \\{1 + [\\mathrm{cos}(\\alpha)]^2 + \\frac{[\\mathrm{cos}(\\alpha)]^2}{[\\mathrm{tan}(\\alpha)]^2}\\}. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$[\\mathrm{cot}(\\alpha) + \\mathrm{tan}(\\alpha)] \\cdot [\\mathrm{cos}(\\alpha)]^2. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$\\left[1 - \\frac{1}{\\mathrm{cot}(\\alpha)}\\right] \\cdot \\left[\\mathrm{tan}(\\alpha) + \\frac{1}{[\\mathrm{cos}(\\alpha)]^2}\\right]. $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$1 + \\mathrm{tan}(\\qty{80}{\\degree}) \\cdot \\frac{\\mathrm{sin}(\\qty{80}{\\degree})}{\\mathrm{cos}(\\qty{80}{\\degree})} . $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$1 - \\frac{\\mathrm{sin}(\\qty{40}{\\degree}) \\cdot \\mathrm{cos}(\\qty{50}{\\degree}) - [\\mathrm{sin}(\\qty{50}{\\degree})]^2}{\\mathrm{sin}(\\qty{40}{\\degree}) \\cdot \\mathrm{cos}(\\qty{50}{\\degree})} . $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$\\{[\\mathrm{tan}(\\qty{10}{\\degree})]^2 - [\\mathrm{sin}(\\qty{10}{\\degree})]^2\\} : [\\mathrm{cos}(\\qty{10}{\\degree})] . $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta avaldis lõpuni näidates lahenduskäigu: $$[\\mathrm{cot}(\\alpha) + \\mathrm{tan}(\\alpha)]^2 - 1 : [\\mathrm{sin}(\\alpha)]^2 . $$"
+  ), # 2
+  list(
+    goal = 3,
+    level = 3,
     task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{\\mathrm{cos}(2 \\cdot \\alpha)}{\\mathrm{cos}(\\alpha)} - \\frac{\\mathrm{sin}(2 \\cdot \\alpha)}{\\mathrm{sin}(\\alpha)}.$$"
   ), # 3
   list(
@@ -372,6 +642,21 @@ modification_of_expressions <- list(
     goal = 3,
     level = 3,
     task = "Lihtsusta lõpuni näidates vahesamme: $$\\frac{1}{4} \\times \\mathrm{sin}(\\frac{\\pi}{6}) \\times \\mathrm{cos}(\\frac{5 \\times \\pi}{4}) \\times \\mathrm{sin}(135\\degree) - [\\mathrm{sin}(\\frac{\\pi}{4}) + \\mathrm{cos}(315\\degree)]^2 .$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$\\mathrm{sin}(\\qty{12}{\\degree}) \\cdot \\mathrm{tan}(\\qty{78}{\\degree}) \\cdot \\mathrm{cos}(\\qty{12}{\\degree}) + [\\mathrm{sin}(\\qty{12}{\\degree})]^2 .$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$[1 - \\mathrm{tan}(\\qty{20}{\\degree})]^2 + [1 + \\mathrm{cot}(\\qty{70}{\\degree})]^2 .$$"
+  ), # 3
+  list(
+    goal = 3,
+    level = 3,
+    task = "Lihtsusta lõpuni näidates vahesamme: $$[1 + [\\mathrm{cot}(\\qty{66}{\\degree})]^2] \\cdot [\\mathrm{cos}(\\qty{24}{\\degree})]^2 .$$"
   ) # 3
 )
 
