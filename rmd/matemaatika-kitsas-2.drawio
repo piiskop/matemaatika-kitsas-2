@@ -195,6 +195,17 @@
             <mxPoint x="100" y="300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-4" value="Composite State" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=30;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="650" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-5" value="&lt;a href=&quot;https://youtu.be/ShlA80K-1tk&quot;&gt;kesknurk ja piirdenurk&lt;/a&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="zeGqMkPXim4bhpI9RW-y-4">
+          <mxGeometry y="30" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-6" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" source="zeGqMkPXim4bhpI9RW-y-4" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
