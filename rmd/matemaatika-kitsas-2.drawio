@@ -41,7 +41,7 @@
         <mxCell id="H3njUC9bQLBFBT5jkG47-11" value="3" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;collapsible=0;rounded=1;arcSize=30;strokeColor=#d6b656;fillColor=#fff2cc;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="470" y="670" width="279" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="H3njUC9bQLBFBT5jkG47-12" value="arvutab ringjoone kaare kui ringjoone osa pikkuse ning ringi sektori kui ringi osa pindala" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-11" vertex="1">
+        <mxCell id="H3njUC9bQLBFBT5jkG47-12" value="arvutab &lt;a href=&quot;https://youtu.be/5QrQdBS312s&quot;&gt;ringjoone kaare&lt;/a&gt; kui ringjoone osa pikkuse ning ringi sektori kui ringi osa pindala" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-11" vertex="1">
           <mxGeometry y="30" width="279" height="40" as="geometry" />
         </mxCell>
         <mxCell id="H3njUC9bQLBFBT5jkG47-14" value="4" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;collapsible=0;rounded=1;arcSize=30;strokeColor=#82b366;fillColor=#d5e8d4;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
@@ -65,7 +65,7 @@
         <mxCell id="H3njUC9bQLBFBT5jkG47-23" value="1" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;collapsible=0;rounded=1;arcSize=30;strokeColor=#b85450;fillColor=#f8cecc;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="175" y="300" width="170" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="H3njUC9bQLBFBT5jkG47-24" value="&lt;a href=&quot;https://youtu.be/5QrQdBS312s&quot;&gt;defineerib mis tahes nurga siinuse, koosinuse ja tangensi&lt;/a&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-23" vertex="1">
+        <mxCell id="H3njUC9bQLBFBT5jkG47-24" value="defineerib mis tahes nurga siinuse, koosinuse ja tangensi" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-23" vertex="1">
           <mxGeometry y="30" width="170" height="50" as="geometry" />
         </mxCell>
         <mxCell id="H3njUC9bQLBFBT5jkG47-29" value=" leiab hulkade ühendi, ühisosa ja antud hulga osahulga" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-23" vertex="1">
@@ -182,6 +182,17 @@
               <mxPoint x="640" y="910" />
               <mxPoint x="457" y="910" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-1" value="Composite State" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=30;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="180" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-2" value="nurk" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="zeGqMkPXim4bhpI9RW-y-1">
+          <mxGeometry y="30" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-3" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" source="zeGqMkPXim4bhpI9RW-y-1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
