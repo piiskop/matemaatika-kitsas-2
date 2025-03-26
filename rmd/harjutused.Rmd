@@ -1,15 +1,40 @@
 # Ülesanded
 
 ```{r label="tasks", echo=FALSE, results='asis'}
-goals <- c(
-  "defineerib mis tahes nurga siinuse, koosinuse ja tangensi",
-  "teisendab kraadimõõdus antud nurga radiaanmõõtu ja vastupidi",
-  "teisendab lihtsamaid trigonomeetrilisi avaldisi (rakenduvad maksimaalselt 3 erinevat trigonomeetrilist seost)",
-  "loeb trigonomeetriliste funktsioonide graafikuid",
-  "rakendab trigonomeetriat, siinus- ja koosinusteoreemi ning kolmnurga pindala valemeid kolmnurga lahendamisel",
-  "leiab rööpküliku ja hulknurga pindala, tükeldades need sobivalt kolmnurkadeks",
-  "arvutab ringjoone kaare kui ringjoone osa pikkuse ning ringi sektori kui ringi osa pindala",
-  "lahendab lihtsamaid reaalelulise kontekstiga planimeetria probleeme"
+goals <- list(
+  list(
+    goal = "defineerib mis tahes nurga siinuse, koosinuse ja tangensi",
+    level = 1
+  ),
+  list(
+    goal = "teisendab kraadimõõdus antud nurga radiaanmõõtu ja vastupidi",
+    level = 2
+  ),
+  list(
+    goal = "teisendab lihtsamaid trigonomeetrilisi avaldisi (rakenduvad maksimaalselt 3 erinevat trigonomeetrilist seost)",
+    level = 3
+  ),
+  list(
+    goal = "loeb trigonomeetriliste funktsioonide graafikuid",
+    level = 4
+  ),
+  list(
+    goal = "rakendab trigonomeetriat, siinus- ja koosinusteoreemi ning kolmnurga pindala valemeid kolmnurga lahendamisel",
+    level = 3
+  ),
+  list(
+    goal = "leiab rööpküliku ja hulknurga pindala, tükeldades need sobivalt kolmnurkadeks",
+    level = 4
+  ),
+  list(
+    goal = "arvutab ringjoone kaare kui ringjoone osa pikkuse ning ringi sektori kui ringi osa pindala",
+    level = 3
+  ),
+  list(
+    goal = "lahendab lihtsamaid reaalelulise kontekstiga planimeetria probleeme",
+    level = 4
+  )
+  
 )
 
 tasks <- list(
@@ -25,15 +50,23 @@ tasks <- list(
   list(goal = 2, level = 1, task = "Mis on radiaan?")
 )
 
-n_fractions <- 32 
-n_decimals <- 32  
+n_decimals_with_pi <- 16  
+n_decimals_without_pi <- 16
 
 gcd <- function(a, b) ifelse(b == 0, abs(a), Recall(b, a %% b))
 
-generate_unique_fraction <- function(existing_values) {
+generate_unique_fraction <- function(
+    existing_values, 
+    min_num=-9,
+    max_num=9,
+    min_den=1,
+    max_den=9,
+    max_value = Inf
+) {
+  
   repeat {
-    num <- sample(-9:9, 1)  
-    den <- sample(1:9, 1)    
+    num <- sample(min_num:max_num, 1)  
+    den <- sample(min_den:max_den, 1)    
     
     common_factor <- gcd(num, den)
     num <- num / common_factor
@@ -41,60 +74,259 @@ generate_unique_fraction <- function(existing_values) {
 
     frac_str <- paste(num, den, sep = "/")
     
-    if (!(frac_str %in% existing_values) && num != 0 && abs(num) <= 999 && den <= 999) {
+    if (!(frac_str %in% existing_values)
+        && num != 0 && abs(num) <= 999
+        && den <= 999
+        && num / den <= max_value) {
       return(list(frac_str, c(num, den))) 
     }
+    
   }
 }
 
-existing_values <- c()  
-angles_fractions <- list()
-
-for (i in 1:n_fractions) {
-  new_frac <- generate_unique_fraction(existing_values)
-  existing_values <- c(existing_values, new_frac[[1]]) 
-  angles_fractions[[i]] <- new_frac[[2]] 
-}
-
-possible_decimals <- setdiff(seq(-4, 4, by = 0.25), 0) 
-angles_decimals <- sample(possible_decimals, n_decimals, replace = FALSE)
-
-if (runif(1) > 0.5) {
-  all_angles <- c(angles_fractions, as.list(angles_decimals), list(0))
-} else {
-  all_angles <- c(angles_fractions, as.list(angles_decimals))
-}
-
-format_latex <- function(value) {
+format_latex <- function(value, with_pi = TRUE) {
   if (is.list(value) || length(value) == 2) {
     num <- value[1]
     den <- value[2]
     
-    if (num == den) {
-      return("\\pi")
-    } else if (num == -den) {
-      return("-\\pi")
-    } else if (den == 1) {
-      return(paste0(num, "\\pi"))
-    } else if (num < 0) {
-      return(paste0("-\\frac{", abs(num), "}{", den, "} \\pi"))
+    print(" with_pi ")
+    print(with_pi)
+    print(" end with_pi ")
+    if (with_pi) {
+      if (num == den) {
+        return("\\pi")
+      } else if (num == -den) {
+        return("-\\pi")
+      } else if (den == 1) {
+        return(paste0(num, "\\pi"))
+      } else if (num < 0) {
+        return(paste0("-\\frac{", abs(num), "}{", den, "} \\pi"))
+      } else {
+        return(paste0("\\frac{", num, "}{", den, "} \\pi"))
+      }
     } else {
-      return(paste0("\\frac{", num, "}{", den, "} \\pi"))
+      if (num == den) {
+        return("\\num{1}")
+      } else if (num == -den) {
+        return("\\num{-1}")
+      } else if (den == 1) {
+        return(paste0("\\num{", num, "}"))
+      } else if (num < 0) {
+        return(paste0("-\\frac{", abs(num), "}{", den, "}"))
+      } else {
+        return(paste0("\\frac{", num, "}{", den, "}"))
+      }
     }
   } else { 
-    if (value == 0) {
-      return("0")
-    } else if (value == 1) {
-      return("\\pi")
-    } else if (value == -1) {
-      return("-\\pi")
+    
+    if (with_pi) {
+      if (value == 0) {
+        return("0")
+      } else if (value == 1) {
+        return("\\pi")
+      } else if (value == -1) {
+        return("-\\pi")
+      } else {
+        return(paste0("\\num{", value, "} \\cdot \\pi"))
+      }
     } else {
-      return(paste0(value, "\\pi"))
+      if (value == 0) {
+        return("0")
+      } else if (value == 1) {
+        return("\\num{1}")
+      } else if (value == -1) {
+        return("\\num{-1}")
+      } else {
+        return(paste0("\\num{", value, "}"))
+      }
+      
     }
+    
   }
+  
 }
 
-angles_latex <- sapply(all_angles, format_latex)
+generate_angles <- function(
+    min_decimal=-4,
+    max_decimal=4,
+    min_num=-9,
+    max_num=9,
+    min_den=1,
+    max_den=9,
+    max_value_with_pi=Inf, 
+    min_decimal_without_pi = .1,
+    max_decimal_without_pi = 2 * pi,
+    n_fractions = 16,
+    nought_needed = TRUE,
+    as_fractions = TRUE,
+    as_decimals = TRUE,
+    with_pi = TRUE,
+    without_pi = TRUE,
+    max_value_without_pi = 2 * pi
+) {
+  angles_with_pi <- c()
+  angles_without_pi <- c()
+  
+  if (as_fractions) {
+    existing_values <- c()  
+    angles_fractions_with_pi <- list()
+    angles_fractions_without_pi <- list()
+    
+    if (with_pi) {
+
+      for (i in 1:n_fractions) {
+        
+        new_frac <- generate_unique_fraction(
+          existing_values,
+          min_num, 
+          max_num,
+          min_den, 
+          max_den,
+          max_value = max_value_with_pi
+        )
+        
+        existing_values <- c(existing_values, new_frac[[1]]) 
+        angles_fractions_with_pi[[i]] <- new_frac[[2]] 
+      }
+      
+      angles_with_pi <- c(
+        angles_with_pi,
+        angles_fractions_with_pi
+      )
+      
+    }
+    
+    if (without_pi) {
+
+      for (i in 1:n_fractions) {
+        
+        new_frac <- generate_unique_fraction(
+          existing_values,
+          min_num, 
+          max_num,
+          min_den, 
+          max_den,
+          max_value = max_value_without_pi
+        )
+        
+        existing_values <- c(existing_values, new_frac[[1]]) 
+        angles_fractions_without_pi[[i]] <- new_frac[[2]] 
+      }
+      
+      
+      angles_without_pi <- c(
+        angles_without_pi,
+        angles_fractions_without_pi
+      )
+
+    }
+    
+  }
+  
+  print(" fractions with pi: ")
+  print(angles_with_pi)
+  print(" fractions with pi in latex ")
+  print(angles_with_pi)
+  print(" fractions without pi: ")
+  print(angles_without_pi)
+  if (as_decimals) {
+    
+    if (with_pi) {
+      print(" max_decimal ")
+      print(max_decimal)
+      possible_decimals_with_pi <- setdiff(
+        seq(min_decimal, max_decimal, by = 0.25),
+        0
+      )
+      
+      number_of_possible_decimals_with_pi <- length(possible_decimals_with_pi)
+
+      if (n_decimals_with_pi > number_of_possible_decimals_with_pi) {
+        n_decimals_with_pi <- number_of_possible_decimals_with_pi
+      }
+  
+      angles_decimals_with_pi <- sample(
+        possible_decimals_with_pi,
+        n_decimals_with_pi,
+        replace = FALSE
+      )
+      
+      angles_with_pi <- c(
+        angles_with_pi,
+        angles_decimals_with_pi
+      )
+      
+    }
+    print(" decimals with pi ")
+    print(angles_decimals_with_pi)
+    if (without_pi) {
+      
+      possible_decimals_without_pi <- setdiff(
+        seq(min_decimal_without_pi, max_decimal_without_pi, by = 0.1),
+        0
+      )
+      
+      number_of_possible_decimals_without_pi <- length(possible_decimals_without_pi)
+  
+      angles_decimals_without_pi <- sample(
+        possible_decimals_without_pi,
+        n_decimals_without_pi,
+        replace = FALSE
+      )
+      
+      angles_without_pi <- c(
+        angles_without_pi,
+        angles_decimals_without_pi
+      )
+
+    }
+    print(" decimals without pi ")
+    print(angles_decimals_without_pi)
+    
+  }
+
+  angles_with_pi <- sapply(angles_with_pi, format_latex)
+  angles_without_pi <- sapply(angles_without_pi, format_latex, with_pi = FALSE)
+ 
+  if (nought_needed) {
+    
+    if (runif(1) > 0.5) {
+    
+      angles <- c(
+        angles_with_pi,
+        angles_without_pi,
+        list(0)
+      )
+  
+    } else {
+      
+      angles <- c(
+        angles_with_pi,
+        angles_without_pi
+       )
+      
+    }
+
+  }
+
+  return( c(
+    angles
+    # sapply(
+  #     sample(
+  #       possible_decimals_without_pi,
+  #       n_decimals_without_pi, 
+  #       replace = FALSE
+  #     ), function(value) {
+  #       return(paste("\\num{", value, "}", sep = ""))
+  #     }
+  #   )
+    )
+  )
+  
+}
+
+angles_latex <- generate_angles()
+
 number_of_angles_in_radians <- length(angles_latex)
 
 tasks_angles_in_radians <- lapply(1:number_of_angles_in_radians, function(i) {
@@ -657,7 +889,307 @@ modification_of_expressions <- list(
     goal = 3,
     level = 3,
     task = "Lihtsusta lõpuni näidates vahesamme: $$[1 + [\\mathrm{cot}(\\qty{66}{\\degree})]^2] \\cdot [\\mathrm{cos}(\\qty{24}{\\degree})]^2 .$$"
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Kui ringjoone raadius on \\qty{5}{\\centi\\m} ja kaarele vastav kesknurk on \\qty{2.8}{\\radian}, siis kui pikk see kaar on? Esita kogu lahenduskäik!"
+  ), # 1
+  list(
+    goal = 7,
+    level = 3,
+    task = "Kui sektori nurk $$x = \\qty{0.8}{\\radian}$$ ja raadius $$r = \\qty{5}{\\centi\\m},$$ siis kui suur on selle sektori pindala? Esita kogu lahenduskäik!"
+  ), # 1
+  list(
+    goal = 7,
+    level = 3,
+    task = "Kui sektori raadius on \\qty{8}{\\centi\\m} ja kaare pikkus on \\qty{10}{\\centi\\m}, siis kui suur on selle sektori pindala? Esita kogu lahenduskäik!"
+  ), # 1
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta sektori pindala ja kaare pikkus, kui kaare pikkus on \\qty{5}{\\centi\\m} ja raadius on \\qty{5}{\\centi\\m}. Esita kogu lahenduskäik!"
+  ), # 1
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui raadius $$r = \\qty{90}{\\centi\\m}$$ ja kaarele vastav kesknurk on \\qty{46}{\\degree}! Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 2
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui raadius $$r = \\qty{90}{\\centi\\m}$$ ja kaarele vastav kesknurk on \\qty{105}{\\degree}! Esita kogu lahenduskäik!"
+  ), # 2
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui raadius $$r = \\qty{90}{\\centi\\m}$$ ja kaarele vastav kesknurk on \\qty{200}{\\degree}! Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 2
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui raadius $$r = \\qty{90}{\\centi\\m}$$ ja kaarele vastav kesknurk on \\qty{400}{\\degree}! Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 2
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta sektori pindala ja kaare pikkus, kui kesknurk on \\qty{2}{\\radian} ja raadius on \\qty{5}{\\deci\\m}. Esita kogu lahenduskäik!"
+  ), # 2
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta sektori pindala ja kaare pikkus, kui kesknurk on \\qty[parse-numbers=false]{\\frac{5 \\times \\pi}{6}}{\\radian} ja raadius on \\qty{12}{\\centi\\m}. Esita kogu lahenduskäik!"
+  ), # 2
+  list(
+    goal = 7,
+    level = 3,
+    task = "Ringjoone raadius on \\qty{10}{\\centi\\m}. Arvuta kesknurgale \\qty{1}{\\degree} vastava kaare pikkus millimeetrites! Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Ringjoone raadius on \\qty{10}{\\centi\\m}. Arvuta kesknurgale \\qty{1}{\\arcminute} vastava kaare pikkus millimeetrites! Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Ringjoone raadius on \\qty{10}{\\centi\\m}. Arvuta kesknurgale \\qty{1}{\\arcsecond} vastava kaare pikkus millimeetrites! Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui raadius $r = \\qty{90}{\\centi\\m}$ ja kaarele vastav kesknurk on \\ang{54; 12}! Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui raadius $$r = \\qty{90}{\\centi\\m}$$ ja kaarele vastav kesknurk on \\qty{36}{\\arcsecond}! Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui vastav kesknurk on \\ang{40; 30} ja raadius $r$ on \\qty{4}{\\centi\\m}. Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui vastav kesknurk on \\ang{40; 30} ja raadius $r$ on \\qty{500}{\\m}. Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui vastav kesknurk on \\ang{40; 30} ja raadius $r$ on \\qty{40}{\\centi\\m}. Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui vastav kesknurk on \\ang{40; 30} ja raadius $r$ on \\qty{100}{\\m}. Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta ringjoone kaare pikkus, kui vastav kesknurk on \\ang{40; 30} ja raadius $r$ on \\qty{360}{\\m}. Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Kui suur on kesknurgale \\ang{65; 15} vastava sektori pindala, kui raadius on $$r = \\qty{8}{\\centi\\m}?$$ Esita kogu lahenduskäik! Lubatud on kasutada taskuarvutit."
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta sektori pindala ja kaare pikkus, kui kesknurk on \\qty{30}{\\degree} ja raadius on \\qty{12}{\\centi\\m}. Esita kogu lahenduskäik!"
+  ), # 3
+  list(
+    goal = 7,
+    level = 3,
+    task = "Arvuta sektori pindala ja kaare pikkus, kui kesknurk on \\qty{114}{\\degree} ja raadius on \\qty{30}{\\centi\\m}. Esita kogu lahenduskäik!"
   ) # 3
+)
+
+# Sector
+
+print(" angles latex central ")
+
+angles_latex_central <- generate_angles(
+  min_decimal = .25,
+  max_decimal = 2,
+  min_num=1,
+  max_num=10,
+  min_den=1,
+  max_den=10,
+  max_value_with_pi = 2,
+  min_decimal_without_pi = .1,
+  max_decimal_without_pi = 2 * pi,
+  n_fractions = 8,
+  with_pi = TRUE,
+  without_pi = TRUE,
+  max_value_without_pi = 2 * pi
+)
+print(angles_latex_central)
+print(" angles latex border ")
+
+angles_latex_border <- generate_angles(
+  min_decimal = .25,
+  max_decimal = 1,
+  min_num=1,
+  max_num=10,
+  min_den=1,
+  max_den=10,
+  max_value_with_pi = 1,
+  min_decimal_without_pi = .1,
+  max_decimal_without_pi = pi,
+  n_fractions = 8,
+  with_pi = TRUE,
+  without_pi = TRUE,
+  max_value_without_pi = pi
+)
+print(angles_latex_border)
+
+number_of_angles_central <- length(angles_latex_central)
+number_of_angles_border <- length(angles_latex_border)
+
+tasks_arc_length_by_central_angle_and_radius <- lapply(
+  1:number_of_angles_central,
+  function(i) {
+    list(
+      goal = 7, 
+      level = 3,
+      task = paste0(
+        "Arvuta sektori kaar, kui kesknurk on $", 
+        angles_latex_central[i],
+        "$ ja raadius on \\num{",
+        sample(x = 1:64, size = 1), 
+        "}. Näita kogu arvutuskäik!"
+      )
+    )
+  }
+)
+# print(" tasks_arc_length_by_central_angle_and_radius ")
+# print(tasks_arc_length_by_central_angle_and_radius)
+
+tasks_arc_length_by_central_angle_and_diameter <- lapply(
+  1:number_of_angles_central,
+  function(i) {
+    list(
+      goal = 7, 
+      level = 3,
+      task = paste0(
+        "Arvuta sektori kaar, kui kesknurk on $", 
+        angles_latex_central[i],
+        "$ ja diameeter on \\num{",
+        sample(x = 1:64, size = 1), 
+        "}. Näita kogu arvutuskäik!"
+      )
+    )
+  }
+)
+
+tasks_arc_length_by_border_angle_and_radius <- lapply(
+  1:number_of_angles_border,
+  function(i) {
+    list(
+      goal = 7, 
+      level = 3,
+      task = paste0(
+        "Arvuta sektori kaar, kui piirdenurk on $", 
+        angles_latex_border[i],
+        "$ ja raadius on \\num{",
+        sample(x = 1:64, size = 1), 
+        "}. Näita kogu arvutuskäik!"
+      )
+    )
+  }
+)
+# print(" tasks_arc_length_by_border_angle_and_radius ")
+# print(tasks_arc_length_by_border_angle_and_radius)
+
+tasks_arc_length_by_border_angle_and_diameter <- lapply(
+  1:number_of_angles_border,
+  function(i) {
+    list(
+      goal = 7, 
+      level = 3,
+      task = paste0(
+        "Arvuta sektori kaar, kui piirdenurk on $", 
+        angles_latex_central[i],
+        "$ ja diameeter on \\num{",
+        sample(x = 1:64, size = 1), 
+        "}. Näita kogu arvutuskäik!"
+      )
+    )
+  }
+)
+
+tasks_sector_area_by_central_angle_and_radius <- lapply(
+  1:number_of_angles_central,
+  function(i) {
+    list(
+      goal = 7, 
+      level = 3,
+      task = paste0(
+        "Arvuta sektori pindala, kui kesknurk on $", 
+        angles_latex_central[i],
+        "$ ja raadius on \\num{",
+        sample(x = 1:64, size = 1), 
+        "}. Näita kogu arvutuskäik!"
+      )
+    )
+  }
+)
+
+# print(" tasks_sector_area_by_central_angle_and_radius ")
+# print(tasks_sector_area_by_central_angle_and_radius)
+
+tasks_sector_area_by_central_angle_and_diameter <- lapply(
+  1:number_of_angles_central,
+  function(i) {
+    list(
+      goal = 7, 
+      level = 3,
+      task = paste0(
+        "Arvuta sektori pindala, kui kesknurk on $", 
+        angles_latex_central[i],
+        "$ ja diameeter on \\num{",
+        sample(x = 1:64, size = 1), 
+        "}. Näita kogu arvutuskäik!"
+      )
+    )
+  }
+)
+
+tasks_sector_area_by_border_angle_and_radius <- lapply(
+  1:number_of_angles_border,
+  function(i) {
+    list(
+      goal = 7, 
+      level = 3,
+      task = paste0(
+        "Arvuta sektori pindala, kui piirdenurk on $", 
+        angles_latex_border[i],
+        "$ ja raadius on \\num{",
+        sample(x = 1:64, size = 1), 
+        "}. Näita kogu arvutuskäik!"
+      )
+    )
+  }
+)
+
+tasks_sector_area_by_border_angle_and_diameter <- lapply(
+  1:number_of_angles_border,
+  function(i) {
+    list(
+      goal = 7, 
+      level = 3,
+      task = paste0(
+        "Arvuta sektori pindala, kui piirdenurk on $", 
+        angles_latex_central[i],
+        "$ ja diameeter on \\num{",
+        sample(x = 1:64, size = 1), 
+        "}. Näita kogu arvutuskäik!"
+      )
+    )
+  }
 )
 
 # Putting together all the tasks
@@ -667,7 +1199,15 @@ tasks <- c(
   tasks_angles_in_radians, 
   tasks_angles_in_degrees,
   combinations_list,
-  modification_of_expressions
+  modification_of_expressions,
+  tasks_arc_length_by_central_angle_and_radius,
+  tasks_arc_length_by_central_angle_and_diameter,
+  tasks_arc_length_by_border_angle_and_radius,
+  tasks_arc_length_by_border_angle_and_diameter,
+  tasks_sector_area_by_central_angle_and_radius,
+  tasks_sector_area_by_central_angle_and_diameter,
+  tasks_sector_area_by_border_angle_and_radius,
+  tasks_sector_area_by_border_angle_and_diameter
 )
 
 dataframe_tasks <- do.call(rbind, lapply(tasks, as.data.frame))
@@ -699,7 +1239,10 @@ random_sample_df <- function(df, new_size) {
   return(final_df)
 }
 
-for (index_of_pupil in 1:number_of_pupils) {
+number_of_tasks_at_level_per_pupil <- 1 # 8
+number_of_tasks <- number_of_pupils * number_of_tasks_at_level_per_pupil
+
+for (index_of_task in 1:number_of_tasks) {
 
   for (index in 1:number_of_goals_in_use) {
     tasks_of_goal <- subset(dataframe_tasks, goals_in_use[index] == `goal`)
@@ -724,14 +1267,25 @@ for (index_of_pupil in 1:number_of_pupils) {
 
 sampled_tasks <- arrange(sampled_tasks, goal, level)
 
+```
+
+
+
+
+## Üks ülesanne õpilase kohta
+
+```{r label="list-of-tasks-one-per-pupil", echo=FALSE, results='asis'}
+
 for (index_of_pupil in 1:number_of_pupils) {
-  cat(paste("## Test: ", index_of_pupil, ". õpilane\n\n", sep = ""))
+  cat(paste("### Test: ", index_of_pupil, ". õpilane\n\n", sep = ""))
 
   for (index in 1:number_of_goals_in_use) {
     
     cat(paste(
-      "**Õpiväljund:** Õpilane ",
-      goals[goals_in_use[index]],
+      "**\\color[hsb]{0.",
+      goals[[goals_in_use[index]]]$level - 1,
+      ", 1, 1}{Õpiväljund:}** Õpilane ",
+      goals[[goals_in_use[index]]]$goal,
       ".\n\n", 
       sep = ""
     ))
@@ -755,6 +1309,59 @@ for (index_of_pupil in 1:number_of_pupils) {
       )
       
       cat(tasks_at_level[index_of_pupil, ]$task, "\n\n", sep = "")
+    }
+
+  }
+
+}
+
+```
+
+## Mitu ülesannet õpilase kohta
+
+```{r label="tasks-many-per-pupil", echo=FALSE, results='asis'}
+current_pupil <- 1
+
+for (index_of_pupil in 1:number_of_pupils) {
+  cat(paste("### Test: ", index_of_pupil, ". õpilane\n\n", sep = ""))
+
+  for (index in 1:number_of_goals_in_use) {
+    
+    cat(paste(
+      "**\\color[hsb]{0.",
+      goals[[goals_in_use[index]]]$level - 1,
+      ", 1, 1}{Õpiväljund:}** Õpilane ",
+      goals[[goals_in_use[index]]]$goal,
+      ".\n\n", 
+      sep = ""
+    ))
+
+    tasks_of_goal <- subset(sampled_tasks, goals_in_use[index] == `goal`)
+    levels_in_use <- unique(x = tasks_of_goal$level)
+    number_of_levels_in_use <- length(levels_in_use)
+
+    for (index_of_levels in 1:number_of_levels_in_use) {
+          
+      cat(
+        "**",
+        levels_in_use[index_of_levels],
+        ". taseme ülesanded:**\n\n ",
+        sep = ""
+      )
+
+      tasks_at_level <- subset(
+        tasks_of_goal,
+        levels_in_use[index_of_levels] == `level`
+      )
+      
+      number_of_tasks_at_level <- nrow(tasks_at_level)
+      last_task_for_pupil <- current_pupil + number_of_tasks_at_level_per_pupil - 1
+      
+      for (index_of_task in current_pupil:last_task_for_pupil) {
+        cat(index_of_task, ". ", tasks_at_level[index_of_task, ]$task, "\n\n", sep = "")
+      }
+      
+      current_pupil <- current_pupil + number_of_tasks_at_level_per_pupil
     }
 
   }

@@ -88,6 +88,7 @@
   output-decimal-marker = {,},
   separate-uncertainty-units = repeat
 }
+
 % For "retain-explicit-decimal-marker"
 \ExplSyntaxOn
 \keys_define:nn { siunitx }
@@ -145,3 +146,7 @@
 \RaggedRight
 
 \raggedbottom % for hindering to spread paragraphs over the page (@kottwitz_2011_latex(p. 95))
+
+% if needed for planimetry 
+\usepackage{tikz}
+\usepackage{tkz-euclide}
