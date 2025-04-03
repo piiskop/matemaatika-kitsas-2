@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0" version="26.1.1" pages="2">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0" version="26.1.3" pages="2">
   <diagram name="Õpiväljundid" id="HOLbYARwxGNt5G9FzNMO">
     <mxGraphModel dx="740" dy="413" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
       <root>
@@ -8,10 +8,10 @@
           <mxGeometry x="370" y="1110" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="H3njUC9bQLBFBT5jkG47-2" value="4" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;collapsible=0;rounded=1;arcSize=30;strokeColor=#82b366;fillColor=#d5e8d4;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
-          <mxGeometry x="243.75" y="1010" width="282.5" height="70" as="geometry" />
+          <mxGeometry x="246.88" y="1000" width="343.12" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="H3njUC9bQLBFBT5jkG47-3" value="lahendab lihtsamaid reaalelulise kontekstiga planimeetria probleeme" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-2" vertex="1">
-          <mxGeometry y="30" width="282.5" height="40" as="geometry" />
+        <mxCell id="H3njUC9bQLBFBT5jkG47-3" value="lahendab lihtsamaid reaalelulise kontekstiga planimeetria probleeme:&lt;br&gt;&lt;a href=&quot;https://youtu.be/zB8ZTyG81Ow&quot;&gt;aken 1&lt;/a&gt;,&lt;br&gt;&lt;a href=&quot;https://youtu.be/3DC8eo3JhOk&quot;&gt;aken 2&lt;/a&gt;,&lt;div&gt;&lt;a href=&quot;https://youtu.be/Fq9VRtYV6oE&quot;&gt;aken 3&lt;/a&gt;,&lt;/div&gt;&lt;div&gt;&lt;a href=&quot;https://youtu.be/-v-FByE2R_w&quot;&gt;aken 4&lt;/a&gt;,&lt;/div&gt;&lt;div&gt;&lt;a href=&quot;https://youtu.be/EgYezPC1UWA&quot;&gt;aken 5&lt;/a&gt;,&lt;/div&gt;&lt;div&gt;&lt;a href=&quot;https://youtu.be/UURFg2iamGM&quot;&gt;aken 6&lt;/a&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-2" vertex="1">
+          <mxGeometry y="30" width="343.12" height="90" as="geometry" />
         </mxCell>
         <mxCell id="H3njUC9bQLBFBT5jkG47-4" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" parent="1" source="H3njUC9bQLBFBT5jkG47-2" target="H3njUC9bQLBFBT5jkG47-1" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -65,7 +65,7 @@
         <mxCell id="H3njUC9bQLBFBT5jkG47-23" value="1" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;collapsible=0;rounded=1;arcSize=30;strokeColor=#b85450;fillColor=#f8cecc;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="175" y="300" width="170" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="H3njUC9bQLBFBT5jkG47-24" value="defineerib mis tahes nurga siinuse, koosinuse ja tangensi" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-23" vertex="1">
+        <mxCell id="H3njUC9bQLBFBT5jkG47-24" value="&lt;a href=&quot;https://youtu.be/VJu7h53GuGE&quot;&gt;defineerib mis tahes nurga siinuse, koosinuse ja tangensi&lt;/a&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-23" vertex="1">
           <mxGeometry y="30" width="170" height="50" as="geometry" />
         </mxCell>
         <mxCell id="H3njUC9bQLBFBT5jkG47-29" value=" leiab hulkade ühendi, ühisosa ja antud hulga osahulga" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="H3njUC9bQLBFBT5jkG47-23" vertex="1">
@@ -184,26 +184,37 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="zeGqMkPXim4bhpI9RW-y-1" value="Composite State" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=30;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" vertex="1" parent="1">
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-1" value="Composite State" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=30;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="20" y="180" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zeGqMkPXim4bhpI9RW-y-2" value="nurk" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="zeGqMkPXim4bhpI9RW-y-1">
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-2" value="nurk" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="zeGqMkPXim4bhpI9RW-y-1" vertex="1">
           <mxGeometry y="30" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="zeGqMkPXim4bhpI9RW-y-3" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" source="zeGqMkPXim4bhpI9RW-y-1" parent="1">
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-3" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" parent="1" source="zeGqMkPXim4bhpI9RW-y-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="100" y="300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zeGqMkPXim4bhpI9RW-y-4" value="Composite State" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=30;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" vertex="1" parent="1">
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-4" value="Composite State" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=30;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
           <mxGeometry x="270" y="650" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zeGqMkPXim4bhpI9RW-y-5" value="&lt;a href=&quot;https://youtu.be/ShlA80K-1tk&quot;&gt;kesknurk ja piirdenurk&lt;/a&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="zeGqMkPXim4bhpI9RW-y-4">
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-5" value="&lt;a href=&quot;https://youtu.be/ShlA80K-1tk&quot;&gt;kesknurk ja piirdenurk&lt;/a&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="zeGqMkPXim4bhpI9RW-y-4" vertex="1">
           <mxGeometry y="30" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="zeGqMkPXim4bhpI9RW-y-6" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" source="zeGqMkPXim4bhpI9RW-y-4" parent="1">
+        <mxCell id="zeGqMkPXim4bhpI9RW-y-6" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" parent="1" source="zeGqMkPXim4bhpI9RW-y-4" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="350" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-W1m9C-Xb5tXNsrV3i1l-1" value="Composite State" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=30;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+          <mxGeometry x="530" y="60" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-W1m9C-Xb5tXNsrV3i1l-2" value="&lt;a href=&quot;https://youtu.be/MkCB1XhrBUU&quot;&gt;kolmnurga sisenurkade summa&lt;/a&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="-W1m9C-Xb5tXNsrV3i1l-1" vertex="1">
+          <mxGeometry y="30" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-W1m9C-Xb5tXNsrV3i1l-3" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" parent="1" source="-W1m9C-Xb5tXNsrV3i1l-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="610" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
