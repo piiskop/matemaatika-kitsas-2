@@ -56,7 +56,6 @@ n_decimals_without_pi <- 16
 gcd <- function(a, b) ifelse(b == 0, abs(a), Recall(b, a %% b))
 
 generate_unique_fraction <- function(
-    existing_values, 
     min_num=-9,
     max_num=9,
     min_den=1,
@@ -64,24 +63,43 @@ generate_unique_fraction <- function(
     max_value = Inf
 ) {
   
-  repeat {
-    num <- sample(min_num:max_num, 1)  
-    den <- sample(min_den:max_den, 1)    
-    
-    common_factor <- gcd(num, den)
-    num <- num / common_factor
-    den <- den / common_factor
+  if (max_num > 999) {
+    max_num <- 999
+  }
+  
+  if (max_den > 999) {
+    max_den <- 999
+  }
+  
+  numerators <- c(min_num:max_num)
+  denominators <- c(min_den:max_den)
+  fractions <- list()
+  
+  for (index_num in 1:length(numerators)) {
+    for (index_den in 1:length(denominators)) {
+      common_factor <- gcd(numerators[index_num], denominators[index_den])
+      num <- numerators[index_num] / common_factor
+      den <- denominators[index_den] / common_factor
 
-    frac_str <- paste(num, den, sep = "/")
-    
-    if (!(frac_str %in% existing_values)
-        && num != 0 && abs(num) <= 999
-        && den <= 999
-        && num / den <= max_value) {
-      return(list(frac_str, c(num, den))) 
+      frac_str <- paste(num, den, sep = "/")
+      exists <- sapply(fractions, function(x) x[[1]] == frac_str)
+      
+      if (!(any(exists))
+          && num != 0
+          && num / den <= max_value) {
+        fractions <- append(fractions, list(list(frac_str, c(num, den)))) 
+      }
+      
     }
     
   }
+  
+  shuffled_list <-  fractions[sample(length(fractions))]
+  sampled_fractions <- lapply(shuffled_list, `[[`, 2)
+  # print(" sampled_fractions ")
+  # print(sampled_fractions)
+  # print(" lõpp sampled_fractions ")
+  return(sampled_fractions)
 }
 
 format_latex <- function(value, with_pi = TRUE) {
@@ -89,9 +107,9 @@ format_latex <- function(value, with_pi = TRUE) {
     num <- value[1]
     den <- value[2]
     
-    print(" with_pi ")
-    print(with_pi)
-    print(" end with_pi ")
+    # print(" with_pi ")
+    # print(with_pi)
+    # print(" end with_pi ")
     if (with_pi) {
       if (num == den) {
         return("\\pi")
@@ -168,16 +186,14 @@ generate_angles <- function(
   angles_without_pi <- c()
   
   if (as_fractions) {
-    existing_values <- c()  
     angles_fractions_with_pi <- list()
     angles_fractions_without_pi <- list()
     
     if (with_pi) {
 
-      for (i in 1:n_fractions) {
+      # for (i in 1:n_fractions) {
         
-        new_frac <- generate_unique_fraction(
-          existing_values,
+        angles_fractions_with_pi <- generate_unique_fraction(
           min_num, 
           max_num,
           min_den, 
@@ -185,10 +201,11 @@ generate_angles <- function(
           max_value = max_value_with_pi
         )
         
-        existing_values <- c(existing_values, new_frac[[1]]) 
-        angles_fractions_with_pi[[i]] <- new_frac[[2]] 
-      }
-      
+        # angles_fractions_with_pi[[i]] <- new_frac[[2]] 
+      # }
+print(" angles_fractions_with_pi ");
+print(angles_fractions_with_pi)
+print(" lõpp angles_fractions_with_pi")
       angles_with_pi <- c(
         angles_with_pi,
         angles_fractions_with_pi
@@ -197,11 +214,10 @@ generate_angles <- function(
     }
     
     if (without_pi) {
-
-      for (i in 1:n_fractions) {
+  
+      # for (i in 1:n_fractions) {
         
-        new_frac <- generate_unique_fraction(
-          existing_values,
+        angles_fractions_without_pi <- generate_unique_fraction(
           min_num, 
           max_num,
           min_den, 
@@ -209,11 +225,9 @@ generate_angles <- function(
           max_value = max_value_without_pi
         )
         
-        existing_values <- c(existing_values, new_frac[[1]]) 
-        angles_fractions_without_pi[[i]] <- new_frac[[2]] 
-      }
-      
-      
+        # angles_fractions_without_pi[[i]] <- new_frac[[2]] 
+      # }
+
       angles_without_pi <- c(
         angles_without_pi,
         angles_fractions_without_pi
@@ -223,17 +237,17 @@ generate_angles <- function(
     
   }
   
-  print(" fractions with pi: ")
-  print(angles_with_pi)
-  print(" fractions with pi in latex ")
-  print(angles_with_pi)
-  print(" fractions without pi: ")
-  print(angles_without_pi)
+  # print(" fractions with pi: ")
+  # print(angles_with_pi)
+  # print(" fractions with pi in latex ")
+  # print(angles_with_pi)
+  # print(" fractions without pi: ")
+  # print(angles_without_pi)
   if (as_decimals) {
     
     if (with_pi) {
-      print(" max_decimal ")
-      print(max_decimal)
+      # print(" max_decimal ")
+      # print(max_decimal)
       possible_decimals_with_pi <- setdiff(
         seq(min_decimal, max_decimal, by = 0.25),
         0
@@ -257,8 +271,8 @@ generate_angles <- function(
       )
       
     }
-    print(" decimals with pi ")
-    print(angles_decimals_with_pi)
+    # print(" decimals with pi ")
+    # print(angles_decimals_with_pi)
     if (without_pi) {
       
       possible_decimals_without_pi <- setdiff(
@@ -280,13 +294,13 @@ generate_angles <- function(
       )
 
     }
-    print(" decimals without pi ")
-    print(angles_decimals_without_pi)
+    # print(" decimals without pi ")
+    # print(angles_decimals_without_pi)
     
   }
 
-  angles_with_pi <- sapply(angles_with_pi, format_latex)
-  angles_without_pi <- sapply(angles_without_pi, format_latex, with_pi = FALSE)
+  angles_with_pi <- lapply(angles_with_pi, format_latex)
+  angles_without_pi <- lapply(angles_without_pi, format_latex, with_pi = FALSE)
  
   if (nought_needed) {
     
@@ -326,12 +340,23 @@ generate_angles <- function(
 }
 
 angles_latex <- generate_angles()
-
+# print(" angles_latex ")
+# print(angles_latex)
+# print(" lõpp angles_latex ")
 number_of_angles_in_radians <- length(angles_latex)
 
 tasks_angles_in_radians <- lapply(1:number_of_angles_in_radians, function(i) {
   list(goal = 2, level = 2, task = paste0("Teisenda kraadidesse nurk $", angles_latex[i], "$. Näita kogu teisenduskäik!"))
+  # print(" ülesanne ")
+  # angles_latex[i]
+  # print(" taalaga ülesanne")
+  # print(paste0("$", angles_latex[i], "$"))
+  # print(" lõpp ülesanne ")
 })
+
+# print(" tasks_angles_in_radians ")
+# print(tasks_angles_in_radians)
+# print(" lõpp tasks_angles_in_radians ")
 
 n_degrees <- 64
 angles_degrees <- sample(-720:720, n_degrees, replace = FALSE)
@@ -1009,7 +1034,7 @@ modification_of_expressions <- list(
 
 # Sector
 
-print(" angles latex central ")
+# print(" angles latex central ")
 
 angles_latex_central <- generate_angles(
   min_decimal = .25,
@@ -1026,8 +1051,8 @@ angles_latex_central <- generate_angles(
   without_pi = TRUE,
   max_value_without_pi = 2 * pi
 )
-print(angles_latex_central)
-print(" angles latex border ")
+# print(angles_latex_central)
+# print(" angles latex border ")
 
 angles_latex_border <- generate_angles(
   min_decimal = .25,
@@ -1044,7 +1069,7 @@ angles_latex_border <- generate_angles(
   without_pi = TRUE,
   max_value_without_pi = pi
 )
-print(angles_latex_border)
+# print(angles_latex_border)
 
 number_of_angles_central <- length(angles_latex_central)
 number_of_angles_border <- length(angles_latex_border)
@@ -1209,8 +1234,14 @@ tasks <- c(
   tasks_sector_area_by_border_angle_and_radius,
   tasks_sector_area_by_border_angle_and_diameter
 )
+# Kontrolli, kas tasks sees on kusagil vektor task-väljal
+# probleemsed <- sapply(tasks, function(x) length(x$task) > 1)
+# which(probleemsed) # annab indeksi, kus probleem tekib
+# print(" proble ")
+# print(tasks[probleemsed]) # kuvab täpse probleemi koha
+# print(" lõpp proble ")
 
-dataframe_tasks <- do.call(rbind, lapply(tasks, as.data.frame))
+dataframe_tasks <- do.call(rbind, lapply(tasks, as.data.frame, stringsAsFactors = FALSE))
 number_goals <- length(goals)
 
 librarian::shelf(c(
@@ -1220,27 +1251,28 @@ librarian::shelf(c(
 number_of_pupils <- 64
 
 goals_in_use <- unique(dataframe_tasks$goal)
+# print(" dataframe_tasks ")
+# print(dataframe_tasks)
+# print(" lõpp dataframe_tasks ")
 number_of_goals_in_use <- length(goals_in_use)
-
 random_sample_df <- function(df, new_size) {
-  base_size <- floor(new_size / nrow(df))  # Kui palju kordi iga rida vähemalt esineb
-  remaining <- new_size %% nrow(df)  # Mitu rida tuleb veel lisada
+  base_size <- floor(new_size / nrow(df))  
+  remaining <- new_size %% nrow(df)
 
-  # Loome uue `data.frame`-i, kus iga rida esineb vähemalt `base_size` korda
-  repeated_df <- df[rep(1:nrow(df), each = base_size), ]
+  repeated_df <- df[rep(1:nrow(df), each = base_size), , drop = FALSE]
 
-  # Lisame ülejäänud read juhuslikult
-  extra_rows <- df[sample(1:nrow(df), remaining, replace = FALSE), ]
+  extra_rows <- df[sample(1:nrow(df), remaining, replace = FALSE), , drop = FALSE]
 
-  # Ühendame ja segame
   final_df <- rbind(repeated_df, extra_rows)
-  final_df <- final_df[sample(1:nrow(final_df)), ]  # Segamine
+  final_df <- final_df[sample(1:nrow(final_df)), , drop = FALSE]
 
   return(final_df)
 }
 
-number_of_tasks_at_level_per_pupil <- 1 # 8
+number_of_tasks_at_level_per_pupil <- 8 # 8
 number_of_tasks <- number_of_pupils * number_of_tasks_at_level_per_pupil
+
+sampled_tasks <- c()
 
 for (index_of_task in 1:number_of_tasks) {
 
@@ -1253,7 +1285,7 @@ for (index_of_task in 1:number_of_tasks) {
       tasks_at_level <- subset(tasks_of_goal, levels_in_use[index_of_level] == `level`)
       sampled_tasks_at_level <- random_sample_df(df = tasks_at_level, new_size = number_of_pupils)
       
-      if (exists("sampled_tasks")) {
+      if (length(sampled_tasks) > 0) {
         sampled_tasks <- rbind(sampled_tasks, sampled_tasks_at_level)
       } else {
         sampled_tasks <- sampled_tasks_at_level
@@ -1264,7 +1296,12 @@ for (index_of_task in 1:number_of_tasks) {
   }
   
 }
-
+# print(" unique sampled_tasks ")
+# print(unique(sampled_tasks$task[grep("c\\(", sampled_tasks$task)]))
+# print(" lõpp unique ")
+# probleemsed_taskid <- sampled_tasks[grep("c\\(", sampled_tasks$task), ]
+# print(probleemsed_taskid)
+# print(" täitsa lõpp unique ")
 sampled_tasks <- arrange(sampled_tasks, goal, level)
 
 ```
