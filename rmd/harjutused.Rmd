@@ -1,6 +1,10 @@
 # Ülesanded
 
 ```{r label="tasks", echo=FALSE, results='asis'}
+librarian::shelf(c(
+  "profvis"
+))
+# profvis({
 goals <- list(
   list(
     goal = "defineerib mis tahes nurga siinuse, koosinuse ja tangensi",
@@ -52,7 +56,6 @@ tasks <- list(
 
 n_decimals_with_pi <- 16  
 n_decimals_without_pi <- 16
-
 gcd <- function(a, b) ifelse(b == 0, abs(a), Recall(b, a %% b))
 
 generate_unique_fraction <- function(
@@ -203,9 +206,9 @@ generate_angles <- function(
         
         # angles_fractions_with_pi[[i]] <- new_frac[[2]] 
       # }
-print(" angles_fractions_with_pi ");
-print(angles_fractions_with_pi)
-print(" lõpp angles_fractions_with_pi")
+# print(" angles_fractions_with_pi ");
+# print(angles_fractions_with_pi)
+# print(" lõpp angles_fractions_with_pi")
       angles_with_pi <- c(
         angles_with_pi,
         angles_fractions_with_pi
@@ -343,6 +346,9 @@ angles_latex <- generate_angles()
 # print(" angles_latex ")
 # print(angles_latex)
 # print(" lõpp angles_latex ")
+# })
+
+
 number_of_angles_in_radians <- length(angles_latex)
 
 tasks_angles_in_radians <- lapply(1:number_of_angles_in_radians, function(i) {
@@ -364,6 +370,9 @@ angles_degrees <- sample(-720:720, n_degrees, replace = FALSE)
 tasks_angles_in_degrees <- lapply(1:n_degrees, function(i) {
   list(goal = 2, level = 2, task = paste0("Teisenda radiaanidesse nurk ", angles_degrees[i], "\\degree. Suurus radiaanides peab olema täpne. Näita kogu teisenduskäik!"))
 })
+# print(" tasks_angles_in_degrees ")
+# print(tasks_angles_in_degrees)
+# print(" lõpp tasks_angles_in_degrees ")
 
 # Creating tasks at the level 3 on radians-degrees
 
@@ -376,6 +385,13 @@ valid_radian_fractions <- expand.grid(numerator = 1:179, denominator = 2:180)
 valid_radian_fractions <- valid_radian_fractions[valid_radian_fractions$numerator < valid_radian_fractions$denominator, ]
 valid_radian_fractions$degree <- with(valid_radian_fractions, (numerator / denominator) * 180)
 valid_radian_fractions <- valid_radian_fractions[valid_radian_fractions$degree %% 1 == 0, ]  # Ainult täisarvud
+# print(" valid_radian_fractions ")
+# print(nrow(valid_radian_fractions))
+# View(valid_radian_fractions)
+# print(" lõpp valid_radian_fractions ")
+
+# })
+
 
 # Funktsioon lihtsustatud radiaanmurdude loomiseks
 simplify_fraction <- function(num, denom) {
@@ -440,6 +456,12 @@ for (i in 1:n_combinations) {
 # Teisendame `data.frame`-iks, veendudes, et igal real on täpselt 4 veergu
 df_combinations <- as.data.frame(do.call(rbind, combinations), stringsAsFactors = FALSE)
 colnames(df_combinations) <- c("Nurk 1", "Nurk 2", "Nurk 3", "Summa kraadides")
+# print(" df_combinations ")
+# View(df_combinations)
+# print(" lõpp df_combinations ")
+# })
+
+
 
 combinations_list <- apply(df_combinations, 1, function(row) {
   list(
@@ -448,6 +470,12 @@ combinations_list <- apply(df_combinations, 1, function(row) {
     task = paste("Kontrolli arvutades, kas need kolm nurka võivad olla sama kolmnurga erinevad sisenurgad: ", row[1], ", ", row[2], " ja ", row[3], ".", sep = "")
   )
 })
+# print(" combinations_list ")
+# View(combinations_list)
+# print(" lõpp combinations_list ")
+# })
+
+
 
 modification_of_expressions <- list(
   list(
@@ -1031,6 +1059,12 @@ modification_of_expressions <- list(
     task = "Arvuta sektori pindala ja kaare pikkus, kui kesknurk on \\qty{114}{\\degree} ja raadius on \\qty{30}{\\centi\\m}. Esita kogu lahenduskäik!"
   ) # 3
 )
+# print(" modification_of_expressions ")
+# View(modification_of_expressions)
+# print(" lõpp modification_of_expressions ")
+# })
+
+
 
 # Sector
 
@@ -1051,8 +1085,12 @@ angles_latex_central <- generate_angles(
   without_pi = TRUE,
   max_value_without_pi = 2 * pi
 )
-# print(angles_latex_central)
-# print(" angles latex border ")
+# print(" angles_latex_central ")
+# View(angles_latex_central)
+# print(" lõpp angles_latex_central ")
+# })
+
+
 
 angles_latex_border <- generate_angles(
   min_decimal = .25,
@@ -1069,7 +1107,12 @@ angles_latex_border <- generate_angles(
   without_pi = TRUE,
   max_value_without_pi = pi
 )
-# print(angles_latex_border)
+# print(" angles_latex_border ")
+# View(angles_latex_border)
+# print(" lõpp angles_latex_border ")
+# })
+
+
 
 number_of_angles_central <- length(angles_latex_central)
 number_of_angles_border <- length(angles_latex_border)
@@ -1091,7 +1134,11 @@ tasks_arc_length_by_central_angle_and_radius <- lapply(
   }
 )
 # print(" tasks_arc_length_by_central_angle_and_radius ")
-# print(tasks_arc_length_by_central_angle_and_radius)
+# View(tasks_arc_length_by_central_angle_and_radius)
+# print(" lõpp tasks_arc_length_by_central_angle_and_radius ")
+# })
+
+
 
 tasks_arc_length_by_central_angle_and_diameter <- lapply(
   1:number_of_angles_central,
@@ -1109,6 +1156,12 @@ tasks_arc_length_by_central_angle_and_diameter <- lapply(
     )
   }
 )
+# print(" tasks_arc_length_by_central_angle_and_diameter ")
+# View(tasks_arc_length_by_central_angle_and_diameter)
+# print(" lõpp tasks_arc_length_by_central_angle_and_diameter ")
+# })
+
+
 
 tasks_arc_length_by_border_angle_and_radius <- lapply(
   1:number_of_angles_border,
@@ -1127,7 +1180,11 @@ tasks_arc_length_by_border_angle_and_radius <- lapply(
   }
 )
 # print(" tasks_arc_length_by_border_angle_and_radius ")
-# print(tasks_arc_length_by_border_angle_and_radius)
+# View(tasks_arc_length_by_border_angle_and_radius)
+# print(" lõpp tasks_arc_length_by_border_angle_and_radius ")
+# })
+
+
 
 tasks_arc_length_by_border_angle_and_diameter <- lapply(
   1:number_of_angles_border,
@@ -1145,6 +1202,12 @@ tasks_arc_length_by_border_angle_and_diameter <- lapply(
     )
   }
 )
+# print(" tasks_arc_length_by_border_angle_and_diameter ")
+# View(tasks_arc_length_by_border_angle_and_diameter)
+# print(" lõpp tasks_arc_length_by_border_angle_and_diameter ")
+# })
+
+
 
 tasks_sector_area_by_central_angle_and_radius <- lapply(
   1:number_of_angles_central,
@@ -1164,7 +1227,11 @@ tasks_sector_area_by_central_angle_and_radius <- lapply(
 )
 
 # print(" tasks_sector_area_by_central_angle_and_radius ")
-# print(tasks_sector_area_by_central_angle_and_radius)
+# View(tasks_sector_area_by_central_angle_and_radius)
+# print(" lõpp tasks_sector_area_by_central_angle_and_radius ")
+# })
+
+
 
 tasks_sector_area_by_central_angle_and_diameter <- lapply(
   1:number_of_angles_central,
@@ -1182,6 +1249,12 @@ tasks_sector_area_by_central_angle_and_diameter <- lapply(
     )
   }
 )
+# print(" tasks_sector_area_by_central_angle_and_diameter ")
+# View(tasks_sector_area_by_central_angle_and_diameter)
+# print(" lõpp tasks_sector_area_by_central_angle_and_diameter ")
+# })
+
+
 
 tasks_sector_area_by_border_angle_and_radius <- lapply(
   1:number_of_angles_border,
@@ -1199,6 +1272,12 @@ tasks_sector_area_by_border_angle_and_radius <- lapply(
     )
   }
 )
+# print(" tasks_sector_area_by_border_angle_and_radius ")
+# View(tasks_sector_area_by_border_angle_and_radius)
+# print(" lõpp tasks_sector_area_by_border_angle_and_radius ")
+# })
+
+
 
 tasks_sector_area_by_border_angle_and_diameter <- lapply(
   1:number_of_angles_border,
@@ -1216,24 +1295,38 @@ tasks_sector_area_by_border_angle_and_diameter <- lapply(
     )
   }
 )
+# print(" tasks_sector_area_by_border_angle_and_diameter ")
+# View(tasks_sector_area_by_border_angle_and_diameter)
+# print(" lõpp tasks_sector_area_by_border_angle_and_diameter ")
+# })
+
+
 
 # Putting together all the tasks
 
 tasks <- c(
   tasks,
-  tasks_angles_in_radians, 
-  tasks_angles_in_degrees,
-  combinations_list,
-  modification_of_expressions,
-  tasks_arc_length_by_central_angle_and_radius,
-  tasks_arc_length_by_central_angle_and_diameter,
-  tasks_arc_length_by_border_angle_and_radius,
-  tasks_arc_length_by_border_angle_and_diameter,
-  tasks_sector_area_by_central_angle_and_radius,
-  tasks_sector_area_by_central_angle_and_diameter,
-  tasks_sector_area_by_border_angle_and_radius,
-  tasks_sector_area_by_border_angle_and_diameter
+  tasks_angles_in_radians, # 250
+  tasks_angles_in_degrees, # 64
+  combinations_list, # 64
+  modification_of_expressions, # 116
+  tasks_arc_length_by_central_angle_and_radius, # 132
+  tasks_arc_length_by_central_angle_and_diameter, # 131
+  tasks_arc_length_by_border_angle_and_radius, # 106
+  tasks_arc_length_by_border_angle_and_diameter, # 105
+  tasks_sector_area_by_central_angle_and_radius, # 132
+  tasks_sector_area_by_central_angle_and_diameter, # 132
+  tasks_sector_area_by_border_angle_and_radius, # 105
+  tasks_sector_area_by_border_angle_and_diameter # 105
 )
+
+# print(" tasks ")
+# View(tasks)
+# print(" lõpp tasks ")
+# })
+
+
+
 # Kontrolli, kas tasks sees on kusagil vektor task-väljal
 # probleemsed <- sapply(tasks, function(x) length(x$task) > 1)
 # which(probleemsed) # annab indeksi, kus probleem tekib
@@ -1255,7 +1348,7 @@ goals_in_use <- unique(dataframe_tasks$goal)
 # print(dataframe_tasks)
 # print(" lõpp dataframe_tasks ")
 number_of_goals_in_use <- length(goals_in_use)
-random_sample_df <- function(df, new_size) {
+random_sample_df <- function(df, new_size) { # 64
   base_size <- floor(new_size / nrow(df))  
   remaining <- new_size %% nrow(df)
 
@@ -1270,39 +1363,61 @@ random_sample_df <- function(df, new_size) {
 }
 
 number_of_tasks_at_level_per_pupil <- 8 # 8
-number_of_tasks <- number_of_pupils * number_of_tasks_at_level_per_pupil
+# number_of_tasks <- number_of_pupils * number_of_tasks_at_level_per_pupil
+ 
+number_of_tasks <- nrow(dataframe_tasks)
+df_segatud <- dataframe_tasks[sample(number_of_tasks), ]
+arranged_sampled_tasks <- arrange(df_segatud, goal, level)
+# print(" arranged_sampled_tasks ")
+# View(arranged_sampled_tasks)
+# print(" lõpp arranged_sampled_tasks ")
+# })
 
-sampled_tasks <- c()
 
-for (index_of_task in 1:number_of_tasks) {
 
-  for (index in 1:number_of_goals_in_use) {
-    tasks_of_goal <- subset(dataframe_tasks, goals_in_use[index] == `goal`)
-    levels_in_use <- unique(tasks_of_goal$level)
-    number_of_levels_in_use <- length(levels_in_use)
-    
-    for (index_of_level in 1:number_of_levels_in_use) {
-      tasks_at_level <- subset(tasks_of_goal, levels_in_use[index_of_level] == `level`)
-      sampled_tasks_at_level <- random_sample_df(df = tasks_at_level, new_size = number_of_pupils)
-      
-      if (length(sampled_tasks) > 0) {
-        sampled_tasks <- rbind(sampled_tasks, sampled_tasks_at_level)
-      } else {
-        sampled_tasks <- sampled_tasks_at_level
-      }
-      
-    }
-      
-  }
-  
-}
+# chosen_tasks <- c()
+# # })
+# 
+# 
+# for (index_of_task in 1:number_of_tasks) { # 1-512
+# 
+#   for (index in 1:number_of_goals_in_use) {
+#     tasks_of_goal <- subset(arranged_sampled_tasks, goals_in_use[index] == `goal`)
+#     levels_in_use <- unique(tasks_of_goal$level)
+#     number_of_levels_in_use <- length(levels_in_use)
+#     
+#     for (index_of_level in 1:number_of_levels_in_use) {
+#       tasks_at_level <- subset(tasks_of_goal, levels_in_use[index_of_level] == `level`)
+#       print(" number tasks_at_level ")
+#       print(goals_in_use[index])
+#       print(levels_in_use[index_of_level])
+#       print(nrow(tasks_at_level))
+#       print(" lõpp number tasks_at_level ")
+#       # sampled_tasks_at_level <- random_sample_df(df = tasks_at_level, new_size = number_of_pupils)
+#       if (number_of_tasks_at_level_per_pupil > nrow(tasks_at_level)) {
+#         number_of_chosen_tasks_at_level <- nrow(tasks_at_level)
+#       } else {
+#         number_of_chosen_tasks_at_level <- number_of_tasks_at_level_per_pupil
+#       }
+#       if (length(chosen_tasks) > 0) {
+#         chosen_tasks <- rbind(chosen_tasks, tasks_at_level[1:number_of_chosen_tasks_at_level, ])
+#       } else {
+#         chosen_tasks <- tasks_at_level[1:number_of_chosen_tasks_at_level, ]
+#       }
+#       
+#     }
+#       
+#   }
+#   
+# }
 # print(" unique sampled_tasks ")
 # print(unique(sampled_tasks$task[grep("c\\(", sampled_tasks$task)]))
 # print(" lõpp unique ")
 # probleemsed_taskid <- sampled_tasks[grep("c\\(", sampled_tasks$task), ]
 # print(probleemsed_taskid)
 # print(" täitsa lõpp unique ")
-sampled_tasks <- arrange(sampled_tasks, goal, level)
+# sampled_tasks <- arrange(sampled_tasks, goal, level)
+# })
 
 ```
 
@@ -1312,12 +1427,15 @@ sampled_tasks <- arrange(sampled_tasks, goal, level)
 ## Üks ülesanne õpilase kohta
 
 ```{r label="list-of-tasks-one-per-pupil", echo=FALSE, results='asis'}
+# profvis({
 
 for (index_of_pupil in 1:number_of_pupils) {
   cat(paste("### Test: ", index_of_pupil, ". õpilane\n\n", sep = ""))
 
   for (index in 1:number_of_goals_in_use) {
-    
+    # print(" index_goals_in_use ")
+    # print(index)
+    # print(" lõpp index_goals_in_use ")
     cat(paste(
       "**\\color[hsb]{0.",
       goals[[goals_in_use[index]]]$level - 1,
@@ -1327,83 +1445,151 @@ for (index_of_pupil in 1:number_of_pupils) {
       sep = ""
     ))
     
-    tasks_of_goal <- subset(sampled_tasks, goals_in_use[index] == `goal`)
-    levels_in_use <- unique(x = tasks_of_goal$level)
-    number_of_levels_in_use <- length(levels_in_use)
+    # tasks_of_goal <- subset(chosen_tasks, goals_in_use[index] == `goal`)
+    # levels_in_use <- unique(x = tasks_of_goal$level)
+    # number_of_levels_in_use <- length(levels_in_use)
 
-    for (index_of_levels in 1:number_of_levels_in_use) {
-          
-      cat(
-        "**",
-        levels_in_use[index_of_levels],
-        ". taseme ülesanne:** ",
-        sep = ""
-      )
-
-      tasks_at_level <- subset(
-        tasks_of_goal,
-        levels_in_use[index_of_levels] == `level`
-      )
+    for (index_of_levels in 1:5) {
+      tasks_goal_level <- subset(arranged_sampled_tasks, index_of_levels == `level` & goals_in_use[index] == `goal`)
+      number_of_tasks_goal_level <- nrow(tasks_goal_level)
+      if (number_of_tasks_goal_level > 0) {
+        
+        cat(
+          "**",
+          index_of_levels,
+          ". taseme ülesanne:** ",
+          sep = ""
+        )
       
-      cat(tasks_at_level[index_of_pupil, ]$task, "\n\n", sep = "")
+        cat(tasks_goal_level[index_of_pupil %% number_of_tasks_goal_level + 1, ]$task, "\n\n", sep = "")
+      }
+
+      # tasks_at_level <- subset(
+      #   tasks_of_goal,
+      #   levels_in_use[index_of_levels] == `level`
+      # )
     }
 
   }
 
 }
+
+# })
 
 ```
 
 ## Mitu ülesannet õpilase kohta
 
 ```{r label="tasks-many-per-pupil", echo=FALSE, results='asis'}
-current_pupil <- 1
 
 for (index_of_pupil in 1:number_of_pupils) {
   cat(paste("### Test: ", index_of_pupil, ". õpilane\n\n", sep = ""))
 
   for (index in 1:number_of_goals_in_use) {
-    
+    # print(" index_goals_in_use ")
+    # print(index)
+    # print(" lõpp index_goals_in_use ")
     cat(paste(
       "**\\color[hsb]{0.",
       goals[[goals_in_use[index]]]$level - 1,
-      ", 1, 1}{Õpiväljund:}** Õpilane ",
+      ", 1, .75}{Õpiväljund:}** Õpilane ",
       goals[[goals_in_use[index]]]$goal,
       ".\n\n", 
       sep = ""
     ))
+    
+    # tasks_of_goal <- subset(chosen_tasks, goals_in_use[index] == `goal`)
+    # levels_in_use <- unique(x = tasks_of_goal$level)
+    # number_of_levels_in_use <- length(levels_in_use)
 
-    tasks_of_goal <- subset(sampled_tasks, goals_in_use[index] == `goal`)
-    levels_in_use <- unique(x = tasks_of_goal$level)
-    number_of_levels_in_use <- length(levels_in_use)
-
-    for (index_of_levels in 1:number_of_levels_in_use) {
-          
-      cat(
-        "**",
-        levels_in_use[index_of_levels],
-        ". taseme ülesanded:**\n\n ",
-        sep = ""
-      )
-
-      tasks_at_level <- subset(
-        tasks_of_goal,
-        levels_in_use[index_of_levels] == `level`
-      )
+    for (index_of_levels in 1:5) {
+      tasks_goal_level <- subset(arranged_sampled_tasks, index_of_levels == `level` & goals_in_use[index] == `goal`)
+      number_of_tasks_goal_level <- nrow(tasks_goal_level)
+      if (number_of_tasks_goal_level > 1) {
+        
+        cat(
+          "**",
+          index_of_levels,
+          ". taseme ülesanded:**\n\n",
+          sep = ""
+        )
       
-      number_of_tasks_at_level <- nrow(tasks_at_level)
-      last_task_for_pupil <- current_pupil + number_of_tasks_at_level_per_pupil - 1
-      
-      for (index_of_task in current_pupil:last_task_for_pupil) {
-        cat(index_of_task, ". ", tasks_at_level[index_of_task, ]$task, "\n\n", sep = "")
+        # cat(tasks_goal_level[index_of_pupil %% number_of_tasks_goal_level + 1, ]$task, "\n\n", sep = "")
+      } else if (number_of_tasks_goal_level > 0) {
+        
+        cat(
+          "**",
+          index_of_levels,
+          ". taseme ülesanne:** ",
+          sep = ""
+        )
+        
       }
       
-      current_pupil <- current_pupil + number_of_tasks_at_level_per_pupil
+      if (number_of_tasks_goal_level > 0) {
+        max_number_of_tasks <- 8 - 1
+        for (index_of_task_goal_level in 0:max_number_of_tasks) {
+          
+          cat("a. ", tasks_goal_level[(index_of_pupil + index_of_task_goal_level) %% number_of_tasks_goal_level + 1, ]$task, "\n\n", sep = "")
+        }
+      }
+
+      # tasks_at_level <- subset(
+      #   tasks_of_goal,
+      #   levels_in_use[index_of_levels] == `level`
+      # )
     }
 
   }
 
 }
+# current_pupil <- 1
+# 
+# for (index_of_pupil in 1:number_of_pupils) {
+#   cat(paste("### Test: ", index_of_pupil, ". õpilane\n\n", sep = ""))
+# 
+#   for (index in 1:number_of_goals_in_use) {
+#     
+#     cat(paste(
+#       "**\\color[hsb]{0.",
+#       goals[[goals_in_use[index]]]$level - 1,
+#       ", 1, 1}{Õpiväljund:}** Õpilane ",
+#       goals[[goals_in_use[index]]]$goal,
+#       ".\n\n", 
+#       sep = ""
+#     ))
+# 
+#     tasks_of_goal <- subset(chosen_tasks, goals_in_use[index] == `goal`)
+#     levels_in_use <- unique(x = tasks_of_goal$level)
+#     number_of_levels_in_use <- length(levels_in_use)
+# 
+#     for (index_of_levels in 1:number_of_levels_in_use) {
+#           
+#       cat(
+#         "**",
+#         levels_in_use[index_of_levels],
+#         ". taseme ülesanded:**\n\n ",
+#         sep = ""
+#       )
+# 
+#       tasks_at_level <- subset(
+#         tasks_of_goal,
+#         levels_in_use[index_of_levels] == `level`
+#       )
+#       
+#       number_of_tasks_at_level <- nrow(tasks_at_level)
+#       last_task_for_pupil <- current_pupil + number_of_tasks_at_level_per_pupil - 1
+#       
+#       for (index_of_task in current_pupil:last_task_for_pupil) {
+#         cat(index_of_task, ". ", tasks_at_level[index_of_task, ]$task, "\n\n", sep = "")
+#       }
+#       
+#       current_pupil <- current_pupil + number_of_tasks_at_level_per_pupil
+#     }
+# 
+#   }
+# 
+# }
 
 ```
 
